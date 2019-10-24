@@ -83,13 +83,10 @@ class login():
         # 1.将data转换为字符串
         string_data = str(data)
 
-        # 2.对字符串格式进行调整
-        string_data = string_data.replace(' ','').replace("'",'"')
-
-        # 3.把字符串转换为bytes类型
+        # 2.把字符串转换为bytes类型
         string_data = string_data.encode("utf-8")
 
-        # 4.最后进行url编码
+        # 3.最后进行url编码
         url_data = quote(string_data)
 
         return url_data
@@ -116,30 +113,3 @@ class login():
         print("accessToken:",result)
         return result
 
-if __name__ == "__main__":
-
-    secret = "123456"
-
-    name = "passport.login.security"
-    data = {"account":"18888888888","password":"a111111","returnUrl":"","captcha":""}
-
-    param = json_template.json_template(name,data).template()
-
-    a = login(param,secret)
-    b = a.getCode()
-
-
-    name = "passport.userinfo.bycode"
-    data = {'code':b}
-    param1 = json_template.json_template(name, data).template()
-
-    c = login(param1,secret)
-    d = c.getToken()
-
-    name = "csc.customer.customerIdAuth"
-    data = {}
-    param2 = json_template.json_template(name, data).template()
-
-
-    e = login(param2,secret)
-    f = e.api_call(d)
