@@ -11,14 +11,14 @@ import time
 
 class login():
     def __init__(self,param,secret):
-        # 拿到secret的值，用来生成sign签名
+
+        # 1.拿到secret的值，用来生成sign签名
         self.secret = secret
+
+        # 2.对入参进行处理
         self.param = self.param_fix(param)
 
-
-
-
-
+    # 处理入参的函数
     def param_fix(self,param):
 
         # 1.拿到data的值
@@ -76,7 +76,8 @@ class login():
         # 6.对结果进行md5加密，生成最后的签名
         return self.md5(string_sign)
 
-    def urlEncoding(self,data): # url编码——>针对于传参中data的url编码
+    # url编码——>针对于传参中data的url编码
+    def urlEncoding(self,data):
         # 1.将data转换为字符串
         string_data = str(data)
 
@@ -91,14 +92,16 @@ class login():
 
         return url_data
 
-    def getCode(self): # 获取返回值中的code值备用
+    # 获取返回值中的code值备用
+    def getCode(self):
 
         response = requests.get("https://service-wbs300.newtamp.cn/passport/api", params=self.param)
         code = response.json().get('value').split("=")[-1]
         print("code:",code)
         return code
 
-    def getToken(self): # 获取token值备用
+    # 获取token值备用
+    def getToken(self):
         response = requests.get("https://service-wbs300.newtamp.cn/passport/api",params = self.param)
         token = response.json()['value']['token']
         print("token:",token)
