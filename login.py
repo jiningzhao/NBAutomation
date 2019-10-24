@@ -8,6 +8,7 @@ import hashlib
 from urllib.parse import quote
 import requests
 import time
+import json_template
 
 class login():
     def __init__(self,param,secret):
@@ -37,7 +38,7 @@ class login():
 
         # 5.调用签名算法生成签名sign，并把sign赋给param，入参param处理完成
         param['sign'] = self.sign(param)
-
+        print(param)
         return param
 
 
@@ -74,6 +75,7 @@ class login():
         string_sign = self.secret + string_sign +self.secret
 
         # 6.对结果进行md5加密，生成最后的签名
+        print(string_sign)
         return self.md5(string_sign)
 
     # url编码——>针对于传参中data的url编码
@@ -107,26 +109,37 @@ class login():
         print("token:",token)
         return token
 
+    # 将token值传入请求头，实现接口的调用
+    def api_call(self,token):
+        response = requests.get("https://service-wbs300.newtamp.cn/{}/api".format(self.param['name'].split(".")[0]),params = self.param,headers = {"token":token})
+        result = response.json()
+        print("accessToken:",result)
+        return result
 
 if __name__ == "__main__":
+
     secret = "123456"
-    param = {
-            "name": "passport.login.security",
-            "version": "",
-            "app_key": "test",
-            "data": {"account":"18888888888","password":"a111111","returnUrl":"","captcha":""},
-            "timestamp": time.strftime('%Y-%m-%d %H:%M:%S',time.localtime()),
-            "format": "json",
-        }
+
+    name = "passport.login.security"
+    data = {"account":"18888888888","password":"a111111","returnUrl":"","captcha":""}
+
+    param = json_template.json_template(name,data).template()
+
     a = login(param,secret)
     b = a.getCode()
 
-    param1 = {"name":"passport.userinfo.bycode",
-                        "version":"",
-                        "app_key":"test",
-                        "data":{'code':b},
-                        "timestamp":time.strftime('%Y-%m-%d %H:%M:%S',time.localtime()),
-                        "format":"json"
-                        }
+
+    name = "passport.userinfo.bycode"
+    data = {'code':b}
+    param1 = json_template.json_template(name, data).template()
+
     c = login(param1,secret)
     d = c.getToken()
+
+    name = "csc.customer.customerIdAuth"
+    data = {}
+    param2 = json_template.json_template(name, data).template()
+
+
+    e = login(param2,secret)
+    f = e.api_call(d)
