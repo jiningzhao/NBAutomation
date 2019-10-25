@@ -7,8 +7,7 @@
 import hashlib
 from urllib.parse import quote
 import requests
-import time
-import json_template
+
 
 class login():
     def __init__(self,param,secret):
@@ -101,15 +100,27 @@ class login():
 
     # 获取token值备用
     def getToken(self):
+
         response = requests.get("https://service-wbs300.newtamp.cn/passport/api",params = self.param)
         token = response.json()['value']['token']
         print("token:",token)
+
         return token
 
     # 将token值传入请求头，实现接口的调用
     def api_call(self,token):
+
         response = requests.get("https://service-wbs300.newtamp.cn/{}/api".format(self.param['name'].split(".")[0]),params = self.param,headers = {"token":token})
         result = response.json()
-        print("accessToken:",result)
-        return result
+        print("value:",result['msg'])
+        return result['code']
 
+class ApiCall(login):
+
+    # 将token值传入请求头，实现接口的调用
+    def api_call(self,token):
+
+        response = requests.get("https://service-wbs300.newtamp.cn/{}/api".format(self.param['name'].split(".")[0]),params = self.param,headers = {"token":token})
+        result = response.json()
+        print("value:",result['msg'])
+        return result['code']
