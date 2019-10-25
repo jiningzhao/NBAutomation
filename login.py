@@ -107,13 +107,7 @@ class login():
 
         return token
 
-    # 将token值传入请求头，实现接口的调用
-    def api_call(self,token):
 
-        response = requests.get("https://service-wbs300.newtamp.cn/{}/api".format(self.param['name'].split(".")[0]),params = self.param,headers = {"token":token})
-        result = response.json()
-        print("value:",result['msg'])
-        return result['code']
 
 class ApiCall(login):
 

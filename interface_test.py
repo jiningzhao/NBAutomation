@@ -1,5 +1,5 @@
 import unittest
-from login import login
+from login import login,ApiCall
 from json_template import json_template
 
 class parameter(unittest.TestCase):
@@ -57,7 +57,7 @@ class WbsTest(parameter):
         data = {}
         param2 = json_template(name, data).template()
 
-        result = login(param2,self.secret).api_call(self.token)
+        result = ApiCall(param2,self.secret).api_call(self.token)
 
         self.assertEqual(0,result,msg="csc.customer.customerIdAuth")
 
