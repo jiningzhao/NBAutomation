@@ -362,9 +362,9 @@ function hide_img(obj){
 </div>
 <div class='heading'>
 <h1>接口自动化用例测试报告：</h1>
-<p class='attribute'><strong>开始时间:</strong> 2019-10-25 14:43:33</p>
-<p class='attribute'><strong>耗时:</strong> 0:00:00.421821</p>
-<p class='attribute'><strong>状态:</strong> <span class="tj passCase">Pass</span>2</p>
+<p class='attribute'><strong>开始时间:</strong> 2019-10-26 17:09:47</p>
+<p class='attribute'><strong>耗时:</strong> 0:00:00.619317</p>
+<p class='attribute'><strong>状态:</strong> <span class="tj passCase">Pass</span>2 <span class="tj failCase">Failure</span>1</p>
 
 <p class='description'>用例执行情况：</p>
 </div>
@@ -397,41 +397,39 @@ function hide_img(obj){
     <th>错误截图</th>
 </tr>
 
-<tr class='passClass'>
-    <td>interface_test.WbsTest</td>
+<tr class='failClass'>
+    <td>interface.add_employee_test.WbsTest</td>
+    <td>3</td>
     <td>2</td>
-    <td>2</td>
+    <td>1</td>
     <td>0</td>
-    <td>0</td>
-    <td><a href="javascript:showClassDetail('c1',2)">详情</a></td>
+    <td><a href="javascript:showClassDetail('c1',3)">详情</a></td>
     <td>&nbsp;</td>
 </tr>
 
-<tr id='pt1.1' class='hiddenRow'>
-    <td ><div class='testcase'>test_get_employeesList</div></td>
+<tr id='ft1.1' class='none'>
+    <td ><div class='testcase'>test_add_employee: 
+            添加员工接口
+        </div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <span class='status passCase'>
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
-        通过</a></span>
+    <span class='status failCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        失败</a></span>
 
-    <div id='div_pt1.1' class="popup_window">
+    <div id='div_ft1.1' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-pt1.1: 123456app_keytestdata%7B%27account%27%3A%20%2718888888888%27%2C%20%27password%27%3A%20%276846860684F05029ABCCC09A53CD66F1%27%2C%20%27returnUrl%27%3A%20%27%27%2C%20%27captcha%27%3A%20%27%27%7Dformatjsonnamepassport.login.securitytimestamp2019-10-25 14:43:33version123456
-{'name': 'passport.login.security', 'version': '', 'app_key': 'test', 'data': '%7B%27account%27%3A%20%2718888888888%27%2C%20%27password%27%3A%20%276846860684F05029ABCCC09A53CD66F1%27%2C%20%27returnUrl%27%3A%20%27%27%2C%20%27captcha%27%3A%20%27%27%7D', 'timestamp': '2019-10-25 14:43:33', 'format': 'json', 'sign': '9387DE9FA51A695FBDEDA124F5CB53EF'}
-code: 7daeb6a5-dcc6-447b-a63d-53c0c16fdb66
-123456app_keytestdata%7B%27code%27%3A%20%277daeb6a5-dcc6-447b-a63d-53c0c16fdb66%27%7Dformatjsonnamepassport.userinfo.bycodetimestamp2019-10-25 14:43:33version123456
-{'name': 'passport.userinfo.bycode', 'version': '', 'app_key': 'test', 'data': '%7B%27code%27%3A%20%277daeb6a5-dcc6-447b-a63d-53c0c16fdb66%27%7D', 'timestamp': '2019-10-25 14:43:33', 'format': 'json', 'sign': '6AD157F2DCF78FEDDEDBE7B83317142A'}
-token: 3812bbcb6-078e-4604-bd11-f1acf804f6bc
-123456app_keytestdata%7B%7Dformatjsonnamecsc.customer.customerIdAuthtimestamp2019-10-25 14:43:33version123456
-{'name': 'csc.customer.customerIdAuth', 'version': '', 'app_key': 'test', 'data': '%7B%7D', 'timestamp': '2019-10-25 14:43:33', 'format': 'json', 'sign': 'A4EBFD93357802A6829427DC7EFF73B7'}
-value: 操作成功
+ft1.1: Preview: {'code': -1, 'msg': '手机号已存在！', 'value': None}
+Traceback (most recent call last):
+  File "/Users/tq/Desktop/BYSJ_Git/NBAutomation/interface/add_employee_test.py", line 90, in test_add_employee
+    self.assertEqual(0,result['code'],msg=result['msg'])
+AssertionError: 0 != -1 : 手机号已存在！
 
 
         </pre>
@@ -443,7 +441,9 @@ value: 操作成功
 </tr>
 
 <tr id='pt1.2' class='hiddenRow'>
-    <td ><div class='testcase'>test_login</div></td>
+    <td ><div class='testcase'>test_get_employeesList: 
+           查询客户列表接口
+        </div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
@@ -458,12 +458,7 @@ value: 操作成功
         </div>
         <pre>
         
-pt1.2: 123456app_keytestdata%7B%27account%27%3A%20%2718888888888%27%2C%20%27password%27%3A%20%276846860684F05029ABCCC09A53CD66F1%27%2C%20%27returnUrl%27%3A%20%27%27%2C%20%27captcha%27%3A%20%27%27%7Dformatjsonnamepassport.login.securitytimestamp2019-10-25 14:43:33version123456
-{'name': 'passport.login.security', 'version': '', 'app_key': 'test', 'data': '%7B%27account%27%3A%20%2718888888888%27%2C%20%27password%27%3A%20%276846860684F05029ABCCC09A53CD66F1%27%2C%20%27returnUrl%27%3A%20%27%27%2C%20%27captcha%27%3A%20%27%27%7D', 'timestamp': '2019-10-25 14:43:33', 'format': 'json', 'sign': '9387DE9FA51A695FBDEDA124F5CB53EF'}
-code: e9cc692e-9001-48d5-afbf-9e2b4fcc0593
-123456app_keytestdata%7B%27code%27%3A%20%27e9cc692e-9001-48d5-afbf-9e2b4fcc0593%27%7Dformatjsonnamepassport.userinfo.bycodetimestamp2019-10-25 14:43:33version123456
-{'name': 'passport.userinfo.bycode', 'version': '', 'app_key': 'test', 'data': '%7B%27code%27%3A%20%27e9cc692e-9001-48d5-afbf-9e2b4fcc0593%27%7D', 'timestamp': '2019-10-25 14:43:33', 'format': 'json', 'sign': '29CAC21851B0791B1DE02BE83CC08C7E'}
-token: 35cf36c83-22a8-446e-b181-6209c6f28344
+pt1.2: Preview: {'code': 0, 'msg': '操作成功', 'results': 48, 'rows': [{'createTime': 1571846400000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 49, 'name': '微营销', 'updateTime': 1571846400000, 'updatedBy': None}, {'createTime': 1571846400000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 48, 'name': '行为统计', 'updateTime': 1571846400000, 'updatedBy': None}, {'createTime': 1571155200000, 'createdBy': None, 'deleted': None, 'entId': None, 'id': 47, 'name': '默认角色', 'updateTime': 1571155200000, 'updatedBy': None}, {'createTime': 1568995200000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 46, 'name': '测试mq', 'updateTime': 1568995200000, 'updatedBy': None}, {'createTime': 1567094400000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 45, 'name': 'yyd', 'updateTime': 1567094400000, 'updatedBy': None}, {'createTime': 1566144000000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 44, 'name': '李冰专属角色', 'updateTime': 1566144000000, 'updatedBy': None}, {'createTime': 1562774400000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 43, 'name': '自动化角色验证', 'updateTime': 1562774400000, 'updatedBy': None}, {'createTime': 1561564800000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 42, 'name': '测试', 'updateTime': 1561564800000, 'updatedBy': None}, {'createTime': 1561564800000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 41, 'name': 'GO测试', 'updateTime': 1561564800000, 'updatedBy': None}, {'createTime': 1561132800000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 40, 'name': '全局角色', 'updateTime': 1561132800000, 'updatedBy': None}, {'createTime': 1560873600000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 39, 'name': '权限角色', 'updateTime': 1560873600000, 'updatedBy': None}, {'createTime': 1560873600000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 38, 'name': '测试银行卡数据权限', 'updateTime': 1560873600000, 'updatedBy': None}, {'createTime': 1560787200000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 37, 'name': '权限测试', 'updateTime': 1560787200000, 'updatedBy': None}, {'createTime': 1560787200000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 36, 'name': '吉宁角色', 'updateTime': 1560787200000, 'updatedBy': None}, {'createTime': 1560182400000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 35, 'name': '直播管理权限验证', 'updateTime': 1560182400000, 'updatedBy': None}, {'createTime': 1560182400000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 34, 'name': '111', 'updateTime': 1560182400000, 'updatedBy': None}, {'createTime': 1560182400000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 33, 'name': '建喜专用', 'updateTime': 1560182400000, 'updatedBy': None}, {'createTime': 1558108800000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 32, 'name': '测试fff', 'updateTime': 1558108800000, 'updatedBy': None}, {'createTime': 1556035200000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 31, 'name': '投教验收', 'updateTime': 1556035200000, 'updatedBy': None}, {'createTime': 1555603200000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 30, 'name': '品牌市场助理', 'updateTime': 1555603200000, 'updatedBy': None}, {'createTime': 1554048000000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 29, 'name': 'fff', 'updateTime': 1554048000000, 'updatedBy': None}, {'createTime': 1553443200000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 28, 'name': '保险', 'updateTime': 1553443200000, 'updatedBy': None}, {'createTime': 1553184000000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 27, 'name': '刚子角色', 'updateTime': 1553184000000, 'updatedBy': None}, {'createTime': 1551283200000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 26, 'name': '实时概况py', 'updateTime': 1551283200000, 'updatedBy': None}, {'createTime': 1550764800000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 25, 'name': '显示金额优化角色', 'updateTime': 1550764800000, 'updatedBy': None}, {'createTime': 1550419200000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 24, 'name': 'py测试0218', 'updateTime': 1550419200000, 'updatedBy': None}, {'createTime': 1550419200000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 23, 'name': 'AA', 'updateTime': 1550419200000, 'updatedBy': None}, {'createTime': 1548864000000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 22, 'name': '测试12', 'updateTime': 1548864000000, 'updatedBy': None}, {'createTime': 1548172800000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 21, 'name': '全局管理员', 'updateTime': 1548172800000, 'updatedBy': None}, {'createTime': 1548086400000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 20, 'name': '权限相关', 'updateTime': 1548086400000, 'updatedBy': None}, {'createTime': 1548086400000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 19, 'name': '事务-销售权限', 'updateTime': 1548086400000, 'updatedBy': None}, {'createTime': 1548086400000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 18, 'name': '事务-全部权限', 'updateTime': 1548086400000, 'updatedBy': None}, {'createTime': 1548000000000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 17, 'name': '测试角色管理', 'updateTime': 1548000000000, 'updatedBy': None}, {'createTime': 1548000000000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 16, 'name': '保险-出单权限', 'updateTime': 1548000000000, 'updatedBy': None}, {'createTime': 1548000000000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 15, 'name': '保险-全部权限', 'updateTime': 1548000000000, 'updatedBy': None}, {'createTime': 1547481600000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 13, 'name': '角色_py', 'updateTime': 1547481600000, 'updatedBy': None}, {'createTime': 1547136000000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 12, 'name': '洒脱', 'updateTime': 1547136000000, 'updatedBy': None}, {'createTime': 1546617600000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 11, 'name': '刚子测试', 'updateTime': 1546617600000, 'updatedBy': None}, {'createTime': 1546531200000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 10, 'name': 'role', 'updateTime': 1546531200000, 'updatedBy': None}, {'createTime': 1546444800000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 9, 'name': 'b', 'updateTime': 1546444800000, 'updatedBy': None}, {'createTime': 1546444800000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 8, 'name': 'a', 'updateTime': 1546444800000, 'updatedBy': None}, {'createTime': 1545753600000, 'createdBy': None, 'deleted': None, 'entId': 2099, 'id': 7, 'name': 'yyd角色', 'updateTime': 1545753600000, 'updatedBy': None}, {'createTime': 1538236800000, 'createdBy': 1, 'deleted': None, 'entId': 2099, 'id': 6, 'name': '客户服务部负责人', 'updateTime': 1538236800000, 'updatedBy': 1}, {'createTime': 1538236800000, 'createdBy': 1, 'deleted': None, 'entId': 2099, 'id': 5, 'name': '培训部负责人', 'updateTime': 1538236800000, 'updatedBy': 1}, {'createTime': 1538236800000, 'createdBy': 1, 'deleted': None, 'entId': 2099, 'id': 4, 'name': '品牌市场部负责人', 'updateTime': 1538236800000, 'updatedBy': 1}, {'createTime': 1538236800000, 'createdBy': 1, 'deleted': None, 'entId': 2099, 'id': 3, 'name': '运营部负责人', 'updateTime': 1538236800000, 'updatedBy': 1}, {'createTime': 1538236800000, 'createdBy': 1, 'deleted': None, 'entId': 2099, 'id': 2, 'name': '产品部负责人', 'updateTime': 1538236800000, 'updatedBy': 1}, {'createTime': 1538236800000, 'createdBy': 1, 'deleted': None, 'entId': 2099, 'id': 1, 'name': '人力资源部负责人', 'updateTime': 1538236800000, 'updatedBy': 1}]}
 
 
         </pre>
@@ -474,11 +469,17 @@ token: 35cf36c83-22a8-446e-b181-6209c6f28344
     <td>无截图</td>
 </tr>
 
+<tr id='pt1.3' class='hiddenRow'>
+    <td><div class='testcase'>test_login</div></td>
+    <td colspan='5' align='center'><span class='status passCase'>通过</span></td>
+    <td>无截图</td>
+</tr>
+
 <tr id='total_row'>
     <th>统计</th>
+    <th>3</th>
     <th>2</th>
-    <th>2</th>
-    <th>0</th>
+    <th>1</th>
     <th>0</th>
     <th>&nbsp;</th>
     <th>&nbsp;</th>
@@ -486,7 +487,7 @@ token: 35cf36c83-22a8-446e-b181-6209c6f28344
 </table>
 <script>
     showCase(1);
-    drawCircle(2, 0, 0);
+    drawCircle(2, 1, 0);
 </script>
 
 <div id='ending'>&nbsp;</div>

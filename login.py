@@ -1,7 +1,7 @@
 '''
 开发者：赵吉宁
 脚本功能：接口登录
-时间：
+时间：2019-10-23
 '''
 # encoding: utf-8
 import hashlib
@@ -37,7 +37,7 @@ class login():
 
         # 5.调用签名算法生成签名sign，并把sign赋给param，入参param处理完成
         param['sign'] = self.sign(param)
-        print(param)
+        # print(param)
         return param
 
 
@@ -74,7 +74,7 @@ class login():
         string_sign = self.secret + string_sign +self.secret
 
         # 6.对结果进行md5加密，生成最后的签名
-        print(string_sign)
+        # print(string_sign)
         return self.md5(string_sign)
 
     # url编码——>针对于传参中data的url编码
@@ -95,7 +95,7 @@ class login():
 
         response = requests.get("https://service-wbs300.newtamp.cn/passport/api", params=self.param)
         code = response.json().get('value').split("=")[-1]
-        print("code:",code)
+        # print("code:",code)
         return code
 
     # 获取token值备用
@@ -103,7 +103,7 @@ class login():
 
         response = requests.get("https://service-wbs300.newtamp.cn/passport/api",params = self.param)
         token = response.json()['value']['token']
-        print("token:",token)
+        # print("token:",token)
 
         return token
 
@@ -116,5 +116,5 @@ class ApiCall(login):
 
         response = requests.get("https://service-wbs300.newtamp.cn/{}/api".format(self.param['name'].split(".")[0]),params = self.param,headers = {"token":token})
         result = response.json()
-        print("value:",result['msg'])
-        return result['code']
+        print("Preview:",result)
+        return result

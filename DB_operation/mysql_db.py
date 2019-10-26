@@ -2,6 +2,7 @@ from pymysql import connect,cursors
 from pymysql.err import OperationalError
 import os
 import configparser as cparser
+import json
 
 '''
 ================读取 db_config.ini 文件设置=================
@@ -76,13 +77,45 @@ class DB():
 
         self.conn.commit()
 
+    def select(self,sql):
+
+        with self.conn.cursor() as cursors:
+            cursors.execute(sql)
+
+        self.conn.commit()
+
+        result1 = cursors.fetchall()
+
+        result1 = json.loads(result1[0]['data'],encoding="utf-8")
+        print("+++",result1)
+
+
     def close(self):
         self.conn.close()
 
 if __name__ == "__main__":
     db = DB()
-    table_name = "user"
-    data = {"account": "18888888888", "password": "a111111", "returnUrl": "", "captcha": ""}
+    table_name = "case1"
+    # data = {"account": "18888888889", "password": "a111111", "returnUrl": "", "captcha": ""}
+    interface_name = "passport.employee.add"
+    data = {"gender":"0",
+                "deptIds":[1],
+                "defaultDept":"",
+                "documentType":"2",
+                "joinDate":"2019-10-01",
+                "roleIds":[],
+                "education":"2",
+                "married":"",
+                "employeeNo":"",
+                "positionId":42,
+                "name":"赵吉宁",
+                "documentNo":"133124152346142",
+                "mobile":"10900000005",
+                "managers":[1],
+                "email":""}
+    print(json.dumps(data))
+    table_data = {"interface_name":interface_name,"data":json.dumps(data,ensure_ascii=False)}
     db.clear(table_name)
-    db.insert(table_name,data)
+    db.insert(table_name,table_data)
+    db.select('select * from case1')
     db.close()

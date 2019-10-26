@@ -2,6 +2,7 @@ import unittest
 from login import login,ApiCall
 from json_template import json_template
 
+
 class parameter(unittest.TestCase):
 
     def __init__(self,methodName = 'runTest',secret = None):
@@ -23,6 +24,7 @@ class parameter(unittest.TestCase):
             suite.addTest(testcase_klass(name, secret = secret))
 
         return suite
+
 
 class WbsTest(parameter):
 
@@ -52,12 +54,39 @@ class WbsTest(parameter):
         return self.token
 
     def test_get_employeesList(self):
-
-        name = "csc.customer.customerIdAuth"
-        data = {}
+        '''
+           查询客户列表接口
+        '''
+        name = "passport.role.search"
+        data = {"start":0,"limit":100}
         param2 = json_template(name, data).template()
 
         result = ApiCall(param2,self.secret).api_call(self.token)
 
-        self.assertEqual(0,result,msg="csc.customer.customerIdAuth")
+        self.assertEqual(0,result['code'],msg=result['msg'])
+
+    def test_add_employee(self):
+        '''
+            添加员工接口
+        '''
+        name = "passport.employee.add"
+        data = {"gender":"0",
+                "deptIds":[1],
+                "defaultDept":"",
+                "documentType":"2",
+                "joinDate":"2019-10-01",
+                "roleIds":[],
+                "education":"2",
+                "married":"",
+                "employeeNo":"",
+                "positionId":42,"name":"赵吉宁",
+                "documentNo":"133124152346142",
+                "mobile":"10900000005",
+                "managers":[1],
+                "email":""}
+        param2 = json_template(name, data).template()
+
+        result = ApiCall(param2,self.secret).api_call(self.token)
+
+        self.assertEqual(0,result['code'],msg=result['msg'])
 
