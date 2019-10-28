@@ -13,7 +13,7 @@ class login():
     def __init__(self,param,secret):
 
         # 1.拿到secret的值，用来生成sign签名
-        self.secret = secret
+        self.secret = str(secret)
 
         # 2.对入参进行处理
         self.param = self.param_fix(param)
@@ -62,7 +62,7 @@ class login():
         param_keys.sort()
 
         # 3.定义一个空字符串等待拼接
-        string_sign = ''
+        string_sign = str()
 
         # 4.将升序排序的param_keys列表递归
         for param_key in param_keys:
@@ -94,7 +94,7 @@ class login():
     def getCode(self):
 
         response = requests.get("https://service-wbs300.newtamp.cn/passport/api", params=self.param)
-        code = response.json().get('value').split("=")[-1]
+        code = str(response.json().get('value')).split("=")[-1]
         # print("code:",code)
         return code
 
@@ -102,8 +102,11 @@ class login():
     def getToken(self):
 
         response = requests.get("https://service-wbs300.newtamp.cn/passport/api",params = self.param)
-        token = response.json()['value']['token']
-        # print("token:",token)
+        try:
+            token = response.json()['value']['token']
+        except KeyError as e:
+            token = None
+            print(e)
 
         return token
 
@@ -116,5 +119,5 @@ class ApiCall(login):
 
         response = requests.get("https://service-wbs300.newtamp.cn/{}/api".format(self.param['name'].split(".")[0]),params = self.param,headers = {"token":token})
         result = response.json()
-        print("Preview:",result)
+        # print("Preview:",result)
         return result

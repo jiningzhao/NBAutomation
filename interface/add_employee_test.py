@@ -1,11 +1,11 @@
 import unittest
-from login import login,ApiCall
-from json_template import json_template
-
+from ..login import login,ApiCall
+from ..json_template import json_template
+import pytest
 
 class parameter(unittest.TestCase):
 
-    def __init__(self,methodName = 'runTest',secret = None):
+    def __init__(self,methodName = 'runTest',secret = "123455"):
 
         super(parameter, self).__init__(methodName)
         self.secret = secret
@@ -49,7 +49,7 @@ class WbsTest(parameter):
 
     def test_login(self):
 
-        self.assertIsNotNone(self.token,msg="登录成功")
+        self.assertIsNotNone(self.token,msg="token为空，登录失败！")
 
         return self.token
 
@@ -62,8 +62,10 @@ class WbsTest(parameter):
         param2 = json_template(name, data).template()
 
         result = ApiCall(param2,self.secret).api_call(self.token)
-
-        self.assertEqual(0,result['code'],msg=result['msg'])
+        try:
+            self.assertEqual(0,result['code'],msg=result['msg'])
+        except AssertionError as e:
+            print(e)
 
     def test_add_employee(self):
         '''
@@ -80,8 +82,8 @@ class WbsTest(parameter):
                 "married":"",
                 "employeeNo":"",
                 "positionId":42,"name":"赵吉宁",
-                "documentNo":"133124152346142",
-                "mobile":"10900000005",
+                "documentNo":"133124152346144",
+                "mobile":"10900000008",
                 "managers":[1],
                 "email":""}
         param2 = json_template(name, data).template()
