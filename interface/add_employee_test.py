@@ -3,6 +3,10 @@ from ..login import login,ApiCall
 from ..json_template import json_template
 import pytest
 
+
+'''
+该文件在使用pytest后将被重写
+'''
 class parameter(unittest.TestCase):
 
     def __init__(self,methodName = 'runTest',secret = "123455"):
@@ -29,6 +33,11 @@ class parameter(unittest.TestCase):
 class WbsTest(parameter):
 
     def setUp(self):
+        '''
+        name要取数据库中的name值，data要取数据库中的data
+        :return:
+        '''
+
         name = "passport.login.security"
         data = {"account": "18888888888", "password": "a111111", "returnUrl": "", "captcha": ""}
 
@@ -62,12 +71,11 @@ class WbsTest(parameter):
         param2 = json_template(name, data).template()
 
         result = ApiCall(param2,self.secret).api_call(self.token)
-        try:
-            self.assertEqual(0,result['code'],msg=result['msg'])
-        except AssertionError as e:
-            print(e)
 
-    def test_add_employee(self):
+        self.assertEqual(0, result['code'], msg=result['msg'])
+
+
+    def stest_add_employee(self):
         '''
             添加员工接口
         '''
@@ -82,8 +90,8 @@ class WbsTest(parameter):
                 "married":"",
                 "employeeNo":"",
                 "positionId":42,"name":"赵吉宁",
-                "documentNo":"133124152346144",
-                "mobile":"10900000008",
+                "documentNo":"1331241523461412312",
+                "mobile":"13123456789",
                 "managers":[1],
                 "email":""}
         param2 = json_template(name, data).template()

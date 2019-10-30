@@ -11,6 +11,11 @@ import requests
 
 class login():
     def __init__(self,param,secret):
+        '''
+        secret需要拿变量——数据库中取值
+        :param param:
+        :param secret:
+        '''
 
         # 1.拿到secret的值，用来生成sign签名
         self.secret = str(secret)
@@ -74,7 +79,6 @@ class login():
         string_sign = self.secret + string_sign +self.secret
 
         # 6.对结果进行md5加密，生成最后的签名
-        # print(string_sign)
         return self.md5(string_sign)
 
     # url编码——>针对于传参中data的url编码
@@ -92,16 +96,23 @@ class login():
 
     # 获取返回值中的code值备用
     def getCode(self):
+        '''
+        url参数需要取变量
+        '''
 
-        response = requests.get("https://service-wbs300.newtamp.cn/passport/api", params=self.param)
-        code = str(response.json().get('value')).split("=")[-1]
-        # print("code:",code)
+        response = requests.get("https://service-wbs310.newtamp.cn/passport/api", params=self.param)
+
+        code = str(response.json().get('value')).split("code=")[-1]
+
         return code
 
     # 获取token值备用
     def getToken(self):
+        '''
+        url参数需要取变量
+        '''
 
-        response = requests.get("https://service-wbs300.newtamp.cn/passport/api",params = self.param)
+        response = requests.get("https://service-wbs310.newtamp.cn/passport/api",params = self.param)
         try:
             token = response.json()['value']['token']
         except KeyError as e:
@@ -116,8 +127,13 @@ class ApiCall(login):
 
     # 将token值传入请求头，实现接口的调用
     def api_call(self,token):
+        '''
+        url参数需要取变量，接口名需要改进，某些name的设计不包含接口文件名称
+        :param token:
+        :return:
+        '''
 
-        response = requests.get("https://service-wbs300.newtamp.cn/{}/api".format(self.param['name'].split(".")[0]),params = self.param,headers = {"token":token})
+        response = requests.get("https://service-wbs310.newtamp.cn/{}/api".format(self.param['name'].split(".")[0]),params = self.param,headers = {"token":token})
         result = response.json()
         # print("Preview:",result)
         return result

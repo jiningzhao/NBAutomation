@@ -4,8 +4,18 @@ from interface.add_employee_test import WbsTest,parameter
 import os
 import time
 
+
+'''
+secret要从数据库中取
+'''
 secret = "123456"
+
 now = time.strftime("%Y-%m-%d-%H-%M-%S",time.localtime(time.time()))
+
+
+'''
+测试用例集的问题在使用pytest之后会被取代
+'''
 # 创建测试用例集
 suite = unittest.TestSuite()
 

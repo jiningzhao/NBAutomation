@@ -2,7 +2,14 @@ import pytest
 from ..login import login,ApiCall
 from ..json_template import json_template
 
-secret = "123456"
+
+'''
+secret要取数据库中的secret值
+name要取数据库中的name
+data要取数据库中的data
+'''
+
+secret = "123455"
 name = "passport.login.security"
 data = {"account": "18888888888", "password": "a111111", "returnUrl": "", "captcha": ""}
 
@@ -35,7 +42,7 @@ def test_get_employeesList():
     # self.assertEqual(0, result['code'], msg=result['msg'])
     assert result['code'] == 0 , result['msg']
 
-def test_add_employee():
+def stest_add_employee():
     '''
         添加员工接口
     '''

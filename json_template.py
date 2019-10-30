@@ -20,3 +20,4 @@ class json_template():
             "format": "json"
         }
         return param
+
