@@ -87,7 +87,8 @@ class DB():
         result1 = cursors.fetchall()
 
         result1 = json.loads(result1[0]['data'],encoding="utf-8")
-        print("+++",result1)
+
+        return result1
 
 
     def close(self):
@@ -117,5 +118,6 @@ if __name__ == "__main__":
     table_data = {"interface_name":interface_name,"data":json.dumps(data,ensure_ascii=False)}
     db.clear(table_name)
     db.insert(table_name,table_data)
-    db.select('select * from case1')
+    result1=db.select('select * from case1')
+    print(result1)
     db.close()

@@ -6,7 +6,7 @@ import time
 
 
 '''
-secret要从数据库中取
+secret要从数据库中取【sql】
 '''
 secret = "123456"
 

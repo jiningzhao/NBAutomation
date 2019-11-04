@@ -12,7 +12,7 @@ import requests
 class login():
     def __init__(self,param,secret):
         '''
-        secret需要拿变量——数据库中取值
+        secret取数据【sql】
         :param param:
         :param secret:
         '''
@@ -22,6 +22,7 @@ class login():
 
         # 2.对入参进行处理
         self.param = self.param_fix(param)
+
 
     # 处理入参的函数
     def param_fix(self,param):
@@ -42,7 +43,7 @@ class login():
 
         # 5.调用签名算法生成签名sign，并把sign赋给param，入参param处理完成
         param['sign'] = self.sign(param)
-        # print(param)
+
         return param
 
 
@@ -97,7 +98,7 @@ class login():
     # 获取返回值中的code值备用
     def getCode(self):
         '''
-        url参数需要取变量
+        接口名取数据【sql】
         '''
 
         response = requests.get("https://service-wbs310.newtamp.cn/passport/api", params=self.param)
@@ -109,7 +110,7 @@ class login():
     # 获取token值备用
     def getToken(self):
         '''
-        url参数需要取变量
+        接口名取数据【sql】
         '''
 
         response = requests.get("https://service-wbs310.newtamp.cn/passport/api",params = self.param)
@@ -128,7 +129,7 @@ class ApiCall(login):
     # 将token值传入请求头，实现接口的调用
     def api_call(self,token):
         '''
-        url参数需要取变量，接口名需要改进，某些name的设计不包含接口文件名称
+        接口名取数据【sql】
         :param token:
         :return:
         '''
