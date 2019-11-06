@@ -1,4 +1,4 @@
-import HTMLTestRunner
+from NoUse import HTMLTestRunner
 import unittest
 from interface.add_employee_test import WbsTest,parameter
 import os
