@@ -3,15 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="622ec513-2afa-4094-9780-18e9a2f47de8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/HTMLTestRunner.py" afterPath="$PROJECT_DIR$/NoUse/HTMLTestRunner.py" />
-      <change beforePath="$PROJECT_DIR$/another_api.py" afterPath="$PROJECT_DIR$/common/another_api.py" />
-      <change beforePath="$PROJECT_DIR$/db_config.ini" afterPath="$PROJECT_DIR$/common/db_config.ini" />
-      <change beforePath="$PROJECT_DIR$/db_fixture/mysql_db.py" afterPath="$PROJECT_DIR$/db_fixture/mysql_db.py" />
       <change beforePath="$PROJECT_DIR$/interface/add_employee_test.py" afterPath="$PROJECT_DIR$/interface/add_employee_test.py" />
-      <change beforePath="$PROJECT_DIR$/interface/add_market_test.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/json_template.py" afterPath="$PROJECT_DIR$/common/json_template.py" />
-      <change beforePath="$PROJECT_DIR$/login.py" afterPath="$PROJECT_DIR$/common/login.py" />
-      <change beforePath="$PROJECT_DIR$/run.py" afterPath="$PROJECT_DIR$/NoUse/run.py" />
+      <change beforePath="$PROJECT_DIR$/interface/venv/lib/python3.7/sre_compile.py" afterPath="$PROJECT_DIR$/interface/venv/lib/python3.7/sre_compile.py" />
+      <change beforePath="$PROJECT_DIR$/interface/venv/lib/python3.7/sre_constants.py" afterPath="$PROJECT_DIR$/interface/venv/lib/python3.7/sre_constants.py" />
+      <change beforePath="$PROJECT_DIR$/interface/venv/lib/python3.7/sre_parse.py" afterPath="$PROJECT_DIR$/interface/venv/lib/python3.7/sre_parse.py" />
+      <change beforePath="$PROJECT_DIR$/interface/venv/lib/python3.7/stat.py" afterPath="$PROJECT_DIR$/interface/venv/lib/python3.7/stat.py" />
+      <change beforePath="$PROJECT_DIR$/interface/venv/lib/python3.7/struct.py" afterPath="$PROJECT_DIR$/interface/venv/lib/python3.7/struct.py" />
+      <change beforePath="$PROJECT_DIR$/interface/venv/lib/python3.7/tarfile.py" afterPath="$PROJECT_DIR$/interface/venv/lib/python3.7/tarfile.py" />
+      <change beforePath="$PROJECT_DIR$/interface/venv/lib/python3.7/tempfile.py" afterPath="$PROJECT_DIR$/interface/venv/lib/python3.7/tempfile.py" />
+      <change beforePath="$PROJECT_DIR$/interface/venv/lib/python3.7/token.py" afterPath="$PROJECT_DIR$/interface/venv/lib/python3.7/token.py" />
+      <change beforePath="$PROJECT_DIR$/interface/venv/lib/python3.7/tokenize.py" afterPath="$PROJECT_DIR$/interface/venv/lib/python3.7/tokenize.py" />
+      <change beforePath="$PROJECT_DIR$/interface/venv/lib/python3.7/types.py" afterPath="$PROJECT_DIR$/interface/venv/lib/python3.7/types.py" />
+      <change beforePath="$PROJECT_DIR$/interface/venv/lib/python3.7/warnings.py" afterPath="$PROJECT_DIR$/interface/venv/lib/python3.7/warnings.py" />
+      <change beforePath="$PROJECT_DIR$/interface/venv/lib/python3.7/weakref.py" afterPath="$PROJECT_DIR$/interface/venv/lib/python3.7/weakref.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/common/login.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2091">
-              <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+              <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
               <folding>
                 <element signature="e#58#72#0" expanded="true" />
               </folding>
@@ -55,11 +59,11 @@
       <file leaf-file-name="add_employee_test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/interface/add_employee_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="682">
+              <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
-                <marker date="1573012585696" expanded="true" signature="1096:1115" ph="select * fro... case1" />
+                <marker date="1573016805174" expanded="true" signature="1570:1589" ph="select * fro... case1" />
               </folding>
             </state>
           </provider>
@@ -69,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/db_fixture/mysql_db.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="623">
-              <caret line="93" column="20" lean-forward="true" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
+              <caret line="93" column="20" lean-forward="false" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
                 <marker date="1573016433759" expanded="true" signature="3363:3372" ph="select * fro... user" />
@@ -94,7 +98,7 @@
         <entry file="file://$PROJECT_DIR$/common/another_api.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+              <caret line="16" column="19" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
               <folding>
                 <element signature="e#60#75#0" expanded="true" />
               </folding>
@@ -160,9 +164,9 @@
         <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/login.py" />
         <option value="$PROJECT_DIR$/common/login.py" />
-        <option value="$PROJECT_DIR$/interface/add_employee_test.py" />
         <option value="$PROJECT_DIR$/common/another_api.py" />
         <option value="$PROJECT_DIR$/db_fixture/mysql_db.py" />
+        <option value="$PROJECT_DIR$/interface/add_employee_test.py" />
       </list>
     </option>
   </component>
@@ -222,31 +226,6 @@
             <path>
               <item name="NBAutomation" type="b2602c69:ProjectViewProjectNode" />
               <item name="NBAutomation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NBAutomation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NBAutomation" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NBAutomation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NBAutomation" type="462c0819:PsiDirectoryNode" />
-              <item name="db_fixture" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NBAutomation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NBAutomation" type="462c0819:PsiDirectoryNode" />
-              <item name="interface" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NBAutomation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NBAutomation" type="462c0819:PsiDirectoryNode" />
-              <item name="log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NBAutomation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NBAutomation" type="462c0819:PsiDirectoryNode" />
-              <item name="Read_The_File" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -543,7 +522,7 @@
     <entry file="file://$PROJECT_DIR$/common/another_api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+          <caret line="16" column="19" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
           <folding>
             <element signature="e#60#75#0" expanded="true" />
           </folding>
@@ -553,7 +532,7 @@
     <entry file="file://$PROJECT_DIR$/common/login.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2091">
-          <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
           <folding>
             <element signature="e#58#72#0" expanded="true" />
           </folding>
@@ -571,7 +550,7 @@
     <entry file="file://$PROJECT_DIR$/db_fixture/mysql_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="623">
-          <caret line="93" column="20" lean-forward="true" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
+          <caret line="93" column="20" lean-forward="false" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
             <marker date="1573016433759" expanded="true" signature="3363:3372" ph="select * fro... user" />
@@ -583,11 +562,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/interface/add_employee_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="682">
+          <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-            <marker date="1573012585696" expanded="true" signature="1096:1115" ph="select * fro... case1" />
+            <marker date="1573016805174" expanded="true" signature="1570:1589" ph="select * fro... case1" />
           </folding>
         </state>
       </provider>
