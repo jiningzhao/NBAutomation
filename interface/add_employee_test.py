@@ -33,7 +33,7 @@ def Secret_value():
 
     return secret
 
-# @pytest.fixture()
+@pytest.fixture()
 def test_login(Secret_value,param):
     '''
     此处的name与data取数据库数据【sql】
