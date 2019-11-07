@@ -1,3 +1,6 @@
+from DB_fixture import mysql_db
+
+
 class data_template():
 
     def passport_login_security(self,account,password):
@@ -7,6 +10,7 @@ class data_template():
         :param password:
         :return:
         '''
+        # mysql_db.DB().select('SELECT account,password from user')
         data={
             "account": account,
             "password": password,
