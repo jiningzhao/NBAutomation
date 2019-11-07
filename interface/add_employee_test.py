@@ -12,52 +12,44 @@ from ..common.data_template import data_template
 
 @pytest.fixture()
 def name_and_data():
-    # name = 'passport.login.security'
-    # data = {"account": "18888888888", "password": "a111111", "returnUrl": "", "captcha": ""}
-    name = []
-    data = []
-    value={'passport.login.security':{"account": "18888888888", "password": "a111111", "returnUrl": "", "captcha": ""}}
 
-    for k,v in value.items():
-        name.append(k)
-        data.append(v)
+    name1 = 'passport.login.security'
+    data1 = data_template().passport_login_security('18888888888', 'a111111')
 
-    return name[0],data[0]
+    return name1,data1
+
+@pytest.fixture()
+def param(name_and_data):
+
+    name1,data1 = name_and_data
+    param = json_template(name1, data1).template()
+
+    return param
 
 @pytest.fixture()
 def Secret_value():
+
     secret = '123456'
+
     return secret
 
 # @pytest.fixture()
-def test_login(Secret_value):
+def test_login(Secret_value,param):
     '''
     此处的name与data取数据库数据【sql】
     :param Secret_value:
     :return:
     '''
-    # name1 = "passport.login.security"
-    # data1 = {"account": "18888888888", "password": "a111111", "returnUrl": "", "captcha": ""}
-    # name1,data1 = name_and_data
-
-    name1 = 'passport.login.security'
-
-    '''
-    入参需要识别name然后按照顺序拿到值
-    '''
-
-    data1 = data_template().passport_login_security('18888888888','a111111')
-    param = json_template(name1, data1).template()
 
     code = login(param, Secret_value).getCode()
+
+    assert code != 'None'
 
     name2 = "passport.userinfo.bycode"
     data2 = data_template().passport_userinfo_bycode(code)
     param1 = json_template(name2, data2).template()
-
     token = login(param1, Secret_value).getToken()
 
-    token = token
 
     assert token != None
 

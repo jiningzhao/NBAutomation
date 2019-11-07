@@ -1,6 +1,12 @@
 class data_template():
 
     def passport_login_security(self,account,password):
+        '''
+        在此处取data中各项的值
+        :param account:
+        :param password:
+        :return:
+        '''
         data={
             "account": account,
             "password": password,
