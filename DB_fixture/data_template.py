@@ -11,16 +11,26 @@ class data_template():
         :return:
         '''
         # mysql_db.DB().select('SELECT account,password from user')
-        data={
+        data = {
             "account": account,
             "password": password,
             "returnUrl": "",
             "captcha": ""
         }
+
         return data
 
     def passport_userinfo_bycode(self,code):
-        data={
+
+        data = {
             'code': code
+        }
+
+        return data
+
+    def passport_employee_add(self,):
+
+        data = {
+
         }
         return data
