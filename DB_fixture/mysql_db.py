@@ -12,7 +12,7 @@ base_dir = str(os.path.dirname(os.path.dirname(__file__)))
 # 对文件路径进行格式处理
 base_dir = base_dir.replace("\\","/")
 # 定位到db_config.ini文件
-file_path = base_dir + "/common/db_config.ini"
+file_path = base_dir + "/config/db_config.ini"
 
 # ConfigParser功能——读取写入配置文件
 cf = cparser.ConfigParser()
@@ -99,21 +99,21 @@ class DB():
 #     table_name = "case1"
 #     # data = {"account": "18888888889", "password": "a111111", "returnUrl": "", "captcha": ""}
 #     interface_name = "passport.employee.add"
-#     data = {"gender":"0",
-#                 "deptIds":[1],
-#                 "defaultDept":"",
-#                 "documentType":"2",
-#                 "joinDate":"2019-10-01",
-#                 "roleIds":[],
-#                 "education":"2",
-#                 "married":"",
-#                 "employeeNo":"",
-#                 "positionId":42,
-#                 "name":"赵吉宁",
-#                 "documentNo":"133124152346142",
-#                 "mobile":"10900000005",
-#                 "managers":[1],
-#                 "email":""}
+    data = {"gender":"0",
+                "deptIds":[1],
+                "defaultDept":"",
+                "documentType":"2",
+                "joinDate":"2019-10-01",
+                "roleIds":[],
+                "education":"2",
+                "married":"",
+                "employeeNo":"",
+                "positionId":42,
+                "name":"赵吉宁",
+                "documentNo":"133124152346142",
+                "mobile":"10900000005",
+                "managers":[1],
+                "email":""}
 #     print(json.dumps(data))
 #     table_data = {"interface_name":interface_name,"data":json.dumps(data,ensure_ascii=False)}
 #     db.clear(table_name)

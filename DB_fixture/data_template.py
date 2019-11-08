@@ -1,4 +1,4 @@
-from DB_fixture import mysql_db
+from ..DB_fixture import mysql_db
 
 
 class data_template():
