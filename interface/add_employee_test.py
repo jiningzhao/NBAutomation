@@ -1,9 +1,9 @@
 from ..common.login import login
-from DB_fixture.param_template import json_template
+from params.param_template import json_template
 import pytest
-from DB_fixture.data_template import data_template
+from params.data_template import data_template
 from DB_fixture.mysql_db import DB
-from common.another_api import ApiCall
+from common.api import ApiCall
 
 '''
 该文件在使用pytest后将被重写

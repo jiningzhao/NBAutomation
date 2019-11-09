@@ -1,3 +1,6 @@
+'''
+data模版
+'''
 from DB_fixture import mysql_db
 
 
