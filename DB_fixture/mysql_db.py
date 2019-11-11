@@ -12,7 +12,7 @@ base_dir = str(os.path.dirname(os.path.dirname(__file__)))
 # 对文件路径进行格式处理
 base_dir = base_dir.replace("\\","/")
 # 定位到db_config.ini文件
-file_path = base_dir + "/common/db_config.ini"
+file_path = base_dir + "/config/db_config.ini"
 
 # ConfigParser功能——读取写入配置文件
 cf = cparser.ConfigParser()

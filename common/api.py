@@ -7,7 +7,12 @@
 # encoding: utf-8
 
 import requests
+from ..config.config import conf
 from ..common.login import login
+
+
+
+
 
 class ApiCall(login):
 
@@ -19,7 +24,10 @@ class ApiCall(login):
         :return:
         '''
 
-        response = requests.get("https://service-wbs310.newtamp.cn/{}/api".format(self.param['name'].split(".")[0]),params = self.param,headers = {"token":token})
+        url,api = conf().api_conf()
+
+        # response = requests.get("https://service-wbs310.newtamp.cn/{}/api".format(self.param['name'].split(".")[0]),params = self.param,headers = {"token":token})
+        response = requests.get(url+api,params = self.param,headers = {"token":token})
         result = response.json()
         # print("Preview:",result)
         return result
