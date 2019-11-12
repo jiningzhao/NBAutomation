@@ -5,19 +5,21 @@ class GetYaml():
     def __init__(self):
 
         f = open('/Users/tq/Desktop/BYSJ_Git/NBAutomation/params/Yaml/test.yaml')
-        self.y = yaml.safe_load(f)
+        self.cases = yaml.safe_load(f)
 
-    def login_yaml(self):
-        for i in self.y:
-            if i['name']=='passport.login.security':
-                return i
-        return None
 
-    def add_employee_yaml(self):
-        for i in self.y:
-            if i['name']=='passport.employee.add':
-                return i
-        return None
+    def case_read(self):
+        # for case in self.cases:
+        #     print(case)
+        #     self.case_split(case)
 
-a=GetYaml().login_yaml()
-print(a)
+        return self.cases
+
+    def case_select(self,name):
+        for case in GetYaml().case_read():
+            if case['name'] == name:
+                return case
+
+
+
+GetYaml().case_read()

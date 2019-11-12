@@ -24,6 +24,7 @@ class login():
         self.param = self.param_fix(param)
 
 
+
     # 处理入参的函数
     def param_fix(self,param):
 
@@ -96,24 +97,29 @@ class login():
         return url_data
 
     # 获取返回值中的code值备用
-    def getCode(self):
+    def getCode(self,method = 'get'):
         '''
         接口名取数据【sql】
         '''
-
-        response = requests.get("https://service-wbs310.newtamp.cn/passport/api", params=self.param)
+        if method == 'post':
+            response = requests.post("https://service-wbs310.newtamp.cn/passport/api", params=self.param)
+        else:
+            response = requests.get("https://service-wbs310.newtamp.cn/passport/api", params=self.param)
 
         code = str(response.json().get('value')).split("code=")[-1]
 
         return code
 
     # 获取token值备用
-    def getToken(self):
+    def getToken(self,method = 'get'):
         '''
         接口名取数据【sql】
         '''
+        if method == 'post':
+            response = requests.post("https://service-wbs310.newtamp.cn/passport/api", params=self.param)
+        else:
+            response = requests.get("https://service-wbs310.newtamp.cn/passport/api",params = self.param)
 
-        response = requests.get("https://service-wbs310.newtamp.cn/passport/api",params = self.param)
         try:
             token = response.json()['value']['token']
         except KeyError as e:
