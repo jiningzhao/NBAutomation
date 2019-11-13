@@ -5,7 +5,7 @@
   api: /passport/api
   method: post
   data:
-      account: 18888888888
+      account: 15110117932
       password: a111111
       returnUrl: !!str
       captcha: !!str
@@ -33,18 +33,19 @@
       name: 测试员工——JN1
       email: !!str
       gender: 0
-      mobile: 14100000012
+      mobile: 14100000015
       deptIds: [1]
       married: !!str
       roleIds: []
       joinDate: !!str 2019-10-01
       managers: [1]
       education: 2
-      documentNo: 36345138541234
+      documentNo: 363452345412423
       employeeNo: !!str
       positionId: 42
       defaultDept: !!str
       documentType: 2
   assert_type: equal
   check: 0
+
 

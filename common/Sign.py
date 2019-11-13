@@ -7,10 +7,11 @@
 import hashlib
 from urllib.parse import quote
 import requests
+from ..config.config import conf
 
 
-class login():
-    def __init__(self,param,secret):
+class Sign():
+    def __init__(self,param):
         '''
         secret取数据【sql】
         :param param:
@@ -18,7 +19,7 @@ class login():
         '''
 
         # 1.拿到secret的值，用来生成sign签名
-        self.secret = str(secret)
+        self.url, self.app_key, self.secret = conf().api_conf()
 
         # 2.对入参进行处理
         self.param = self.param_fix(param)
@@ -96,35 +97,35 @@ class login():
 
         return url_data
 
-    # 获取返回值中的code值备用
-    def getCode(self,method = 'get'):
-        '''
-        接口名取数据【sql】
-        '''
-        if method == 'post':
-            response = requests.post("https://service-wbs310.newtamp.cn/passport/api", params=self.param)
-        else:
-            response = requests.get("https://service-wbs310.newtamp.cn/passport/api", params=self.param)
-
-        code = str(response.json().get('value')).split("code=")[-1]
-
-        return code
-
-    # 获取token值备用
-    def getToken(self,method = 'get'):
-        '''
-        接口名取数据【sql】
-        '''
-        if method == 'post':
-            response = requests.post("https://service-wbs310.newtamp.cn/passport/api", params=self.param)
-        else:
-            response = requests.get("https://service-wbs310.newtamp.cn/passport/api",params = self.param)
-
-        try:
-            token = response.json()['value']['token']
-        except KeyError as e:
-            token = None
-            print(e)
-
-        return token
+    # # 获取返回值中的code值备用
+    # def getCode(self,method = 'get'):
+    #     '''
+    #     接口名取数据【sql】
+    #     '''
+    #     if method == 'post':
+    #         response = requests.post("https://service-wbs310.newtamp.cn/passport/api", params=self.param)
+    #     else:
+    #         response = requests.get("https://service-wbs310.newtamp.cn/passport/api", params=self.param)
+    #
+    #     code = str(response.json().get('value')).split("code=")[-1]
+    #
+    #     return code
+    #
+    # # 获取token值备用
+    # def getToken(self,method = 'get'):
+    #     '''
+    #     接口名取数据【sql】
+    #     '''
+    #     if method == 'post':
+    #         response = requests.post("https://service-wbs310.newtamp.cn/passport/api", params=self.param)
+    #     else:
+    #         response = requests.get("https://service-wbs310.newtamp.cn/passport/api",params = self.param)
+    #
+    #     try:
+    #         token = response.json()['value']['token']
+    #     except KeyError as e:
+    #         token = None
+    #         print(e)
+    #
+    #     return token
 
