@@ -7,7 +7,8 @@
 import hashlib
 from urllib.parse import quote
 import requests
-from ..config.config import conf
+# from ..config.config import conf
+from config.config import conf
 
 
 class Sign():

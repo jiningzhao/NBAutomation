@@ -5,7 +5,8 @@
 '''
 
 import time
-from ..config.config import conf
+# from ..config.config import conf
+from config.config import conf
 class json_template():
     def __init__(self,name,data):
         self.name = name

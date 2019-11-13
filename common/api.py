@@ -7,7 +7,8 @@
 # encoding: utf-8
 
 import requests
-from ..common.Sign import Sign
+# from ..common.Sign import Sign
+from common.Sign import Sign
 
 
 class ApiCall(Sign):
