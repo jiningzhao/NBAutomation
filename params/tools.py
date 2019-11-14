@@ -4,7 +4,8 @@ class GetYaml():
 
     def __init__(self):
 
-        f = open('/Users/tq/Desktop/BYSJ_Git/NBAutomation/params/Yaml/test.yaml')
+        # f = open('/Users/tq/Desktop/BYSJ_Git/NBAutomation/params/Yaml/test.yaml')
+        f = open(r'E:\Newbanker\NBAutomation\params\Yaml\test.yaml')
         self.y = yaml.safe_load(f)
 
     def login_yaml(self):
