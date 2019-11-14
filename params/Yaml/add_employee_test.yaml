@@ -33,14 +33,14 @@
       name: 测试员工——JN1
       email: !!str
       gender: 0
-      mobile: 14100000015
+      mobile: None
       deptIds: [1]
       married: !!str
       roleIds: []
       joinDate: !!str 2019-10-01
       managers: [1]
       education: 2
-      documentNo: 363452345412423
+      documentNo: None
       employeeNo: !!str
       positionId: 42
       defaultDept: !!str

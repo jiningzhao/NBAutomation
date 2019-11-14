@@ -66,16 +66,19 @@ class Test_Add_Empolyee_Process():
         return token
 
 
-    def test_add_employee(self,test_getToken):
+    def test_add_employee(self,test_getToken,random_name,random_mobile,random_ID):
 
         name = 'passport.employee.add'
         case = GetYaml('add_employee_test').case_select(name)
         data = case['data']
+        data['mobile'] = random_mobile
+        data['name'] = random_name
+        data['documentNo'] = random_ID
         check = case['check']
         method = case['method']
         api =case['api']
         datail =case['datail']
-
+        print(data['mobile'])
         param = json_template(name, data).template()
         result = ApiCall(param).api_call(test_getToken,api,method)
 
@@ -84,4 +87,4 @@ class Test_Add_Empolyee_Process():
 
 if __name__ == '__main__':
     # pytest.main(['-v','--setup-show'])
-    pytest.main(['--html=report3.html'])
+    pytest.main(['--html=../report/report3.html'])
