@@ -7,27 +7,25 @@
 # encoding: utf-8
 
 import requests
-from ..config.config import conf
-from ..common.login import login
+from ..common.Sign import Sign
+# from common.Sign import Sign
 
 
-
-
-
-class ApiCall(login):
+class ApiCall(Sign):
 
     # 将token值传入请求头，实现接口的调用
-    def api_call(self,token):
-        '''
-        接口名取数据【sql】
-        :param token:
-        :return:
-        '''
+    def api_call(self,token,api,method='get'):
 
-        url,api = conf().api_conf()
+        header = {"token": token}
+        if token == None:
+            header = None
 
-        # response = requests.get("https://service-wbs310.newtamp.cn/{}/api".format(self.param['name'].split(".")[0]),params = self.param,headers = {"token":token})
-        response = requests.get(url+api,params = self.param,headers = {"token":token})
+        if method == 'post':
+            response = requests.post(self.url + api, params=self.param, headers=header)
+
+        else:
+            response = requests.get(self.url+api,params = self.param,headers = header)
+
         result = response.json()
-        # print("Preview:",result)
+
         return result

@@ -1,79 +1,89 @@
-from ..common.login import login
-from ..params.param_template import json_template
 import pytest
-from ..params.data_template import data_template
-from ..DB_fixture.mysql_db import DB
+from ..params.param_template import json_template
 from ..common.api import ApiCall
 from ..params.tools import GetYaml
-
+from ..common.Assert import Assert
+# import pytest
+# from params.param_template import json_template
+# from common.api import ApiCall
+# from params.tools import GetYaml
+# from common.Assert import Assert
 '''
 该文件在使用pytest后将被重写
 '''
 
+class Test_Add_Empolyee_Process():
 
-# @pytest.fixture()
-# def name_and_data():
-#
-#     name1 = 'passport.login.security'
-#     data1 = data_template().passport_login_security('18888888888', 'a111111')
-#
-#     return name1,data1
-#
-# @pytest.fixture()
-# def param(name_and_data):
-#
-#     name1,data1 = name_and_data
-#     param = json_template(name1, data1).template()
-#
-#     return param
+    @pytest.fixture()
+    def test_login(self):
 
-@pytest.fixture()
-def Secret_value():
+        '''
+        此处的name与data取数据库数据【sql】
+        :param Secret_value:
+        :return:
+        '''
+        name = 'passport.login.security'
 
-    secret = '123456'
-
-    return secret
-
-@pytest.fixture()
-def test_login(Secret_value):
-    '''
-    此处的name与data取数据库数据【sql】
-    :param Secret_value:
-    :return:
-    '''
-    name = 'passport.login.security'
-    data = GetYaml().login_yaml()['data']
-    param = json_template(name,data).template()
-    code = login(param, Secret_value).getCode()
-
-    assert code != 'None'
-
-    name2 = "passport.userinfo.bycode"
-    data2 = data_template().passport_userinfo_bycode(code)
-    param1 = json_template(name2, data2).template()
-
-    token = login(param1, Secret_value).getToken()
+        case = GetYaml('add_employee_test').case_select(name)
+        data = case['data']
+        check = case['check']
+        method = case['method']
+        api = case['api']
+        datail = case['datail']
+        param = json_template(name,data).template()
 
 
-    assert token != None
-
-    return token
+        code = str(ApiCall(param).api_call(None,api,method)['value']).split('code=')[-1]
 
 
-def test_add_employee(test_login,Secret_value):
-    '''
-    此处的name与data取数据库数据【sql】
-    :param test_login:
-    :param Secret_value:
-    :return:
-    '''
-    name3 = "passport.employee.add"
-    # data3 = DB().select('select * from case1')
-    # data3 = data_template().passport_employee_add()
-    data3 = GetYaml().add_employee_yaml()['data']
+        Assert().notEqual(code,check,datail)
+        return code
 
-    param2 = json_template(name3, data3).template()
+    @pytest.fixture()
+    def test_getToken(self,test_login):
 
-    result = ApiCall(param2, Secret_value).api_call(test_login)
 
-    assert result['code'] == 0 , result['msg']
+        name = 'passport.userinfo.bycode'
+        '''
+        GetYaml传测试用例文件名
+        '''
+
+        case = GetYaml('add_employee_test').case_select(name)
+        data = case['data']
+        check = case['check']
+        method = case['method']
+        api = case['api']
+        datail = case['datail']
+
+        data['code'] = test_login
+        param = json_template(name, data).template()
+
+        token = ApiCall(param).api_call(None,api,method)['value']['token']
+
+        Assert().notEqual(token,check,datail)
+
+        return token
+
+
+    def test_add_employee(self,test_getToken,random_name,random_mobile,random_ID):
+
+        name = 'passport.employee.add'
+        case = GetYaml('add_employee_test').case_select(name)
+        data = case['data']
+        data['mobile'] = random_mobile
+        data['name'] = random_name
+        data['documentNo'] = random_ID
+        check = case['check']
+        method = case['method']
+        api =case['api']
+        datail =case['datail']
+        print(data['mobile'])
+        param = json_template(name, data).template()
+        result = ApiCall(param).api_call(test_getToken,api,method)
+
+        Assert().equal(result['code'],check,datail)
+
+
+if __name__ == '__main__':
+    # pytest.main(['-v','--setup-show'])
+    pytest.main(['--html=../report/report3.html'])

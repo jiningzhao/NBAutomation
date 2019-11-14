@@ -2,36 +2,50 @@
 -
   datail: !!str 全局管理员登录
   name: passport.login.security
-  url: /passport/api
+  api: /passport/api
   method: post
   data:
-      account: 18888888888
+      account: 15110117932
       password: a111111
       returnUrl: !!str
       captcha: !!str
-  assert_type: equal
+  assert_type: notEqual
+  check: None
+
+# 获取Token
+-
+  datail: !!str 获取Token信息
+  name: passport.userinfo.bycode
+  api: /passport/api
+  method: post
+  data:
+      code: None
+  assert_type: notEqual
+  check: None
 
 # 新增员工
 -
   datail: 新增员工
   name: passport.employee.add
-  url: /passport/api
+  api: /passport/api
   method: post
   data:
       name: 测试员工——JN1
       email: !!str
       gender: 0
-      mobile: 16100000001
+      mobile: None
       deptIds: [1]
       married: !!str
       roleIds: []
       joinDate: !!str 2019-10-01
       managers: [1]
       education: 2
-      documentNo: 3634513112
+      documentNo: None
       employeeNo: !!str
       positionId: 42
       defaultDept: !!str
       documentType: 2
-  assert_type: !!str equal
+  assert_type: equal
+  check: 0
+
 

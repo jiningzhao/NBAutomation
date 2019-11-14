@@ -2,23 +2,26 @@ import yaml
 
 class GetYaml():
 
-    def __init__(self):
+    def __init__(self,casename):
+        self.casename = casename
+        '''
+        苹果电脑路径
+        '''
+        f = open(r'/Users/tq/Desktop/BYSJ_Git/NBAutomation/params/Yaml/{}.yaml'.format(self.casename))
+        '''
+        Windows电脑路径
+        '''
+        # f = open(r'../params/Yaml/{}.yaml'.format(self.casename),encoding='UTF-8')
 
-        # f = open('/Users/tq/Desktop/BYSJ_Git/NBAutomation/params/Yaml/test.yaml')
-        f = open(r'E:\Newbanker\NBAutomation\params\Yaml\test.yaml')
-        self.y = yaml.safe_load(f)
+        self.cases = yaml.safe_load(f)
 
-    def login_yaml(self):
-        for i in self.y:
-            if i['name']=='passport.login.security':
-                return i
-        return None
+    def case_read(self):
+        return self.cases
 
-    def add_employee_yaml(self):
-        for i in self.y:
-            if i['name']=='passport.employee.add':
-                return i
-        return None
+    def case_select(self,name):
+        for case in GetYaml(self.casename).case_read():
+            if case['name'] == name:
+                return case
 
-a=GetYaml().login_yaml()
-print(a)
+
+
