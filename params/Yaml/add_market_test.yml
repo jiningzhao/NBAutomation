@@ -1,0 +1,47 @@
+# 新增市场活动
+-
+  datail: !!str 新增市场活动
+  name: ac.activity.add
+  api: /ac-web/api
+  method: post
+  data:
+    activityLabelId: [1]
+    name: 新增市场活动测试
+    signupControlNum: '10'
+    startTime: '2019-11-01 13:02:32'
+    pictureUrl: https://pic.newbanker.cn/img/2401/2019/11/16/1807f78a6be04ddb8bc62a59cfcb5557.png
+    endTime: '2019-11-30 13:02:38'
+    typeId: 18
+    invitePeopleNum: 活动邀约展示人数
+    content: <p>活动内容</p>
+    summary: 简介
+    fileUrl: []
+    deptCode:
+      id: 1
+      code: GTEAMM0001
+      parentCode: null
+      name: 总裁办
+      empCnt: 0
+      departmentTypeCode: 1
+      childs: []
+    address:
+      province: 120000
+      city: 120100
+      detail: 详细地点
+    shareCfg: 1
+    signUpResult: 1
+    shareChannel: [1, 2]
+    evaluationPeriod: 30
+    scope:
+      innerAdvisorScope:
+        officeIds: []
+        deptCodes: []
+        labelIds: []
+        type: -1
+      outsideAdvisorScope:
+        type: -1
+      customerScope:
+        labelIds: [-1]
+        type: -1
+  assert_type: equal
+  check: 0

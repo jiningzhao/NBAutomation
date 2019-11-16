@@ -30,13 +30,14 @@ class Test_Add_Empolyee_Process():
         method = case['method']
         api = case['api']
         datail = case['datail']
+        assert_type = case['assert_type']
         param = json_template(name,data).template()
         # code = login(param, secret).getCode(method)
 
         code = str(ApiCall(param).api_call(None,api,method)['value']).split('code=')[-1]
 
         # assert code != 'None'
-        Assert().notEqual(code,check,datail)
+        Assert(assert_type,code,check,datail)
         return code
 
     @pytest.fixture()
@@ -54,14 +55,14 @@ class Test_Add_Empolyee_Process():
         method = case['method']
         api = case['api']
         datail = case['datail']
-
+        assert_type = case['assert_type']
         data['code'] = test_login
         param = json_template(name, data).template()
         # token = login(param, secret).getToken(method)
         token = ApiCall(param).api_call(None,api,method)['value']['token']
 
-        Assert().notEqual(token,check,datail)
-        assert token != None
+        Assert(assert_type, token, check, datail)
+
 
         return token
 
@@ -78,13 +79,35 @@ class Test_Add_Empolyee_Process():
         method = case['method']
         api =case['api']
         datail =case['datail']
+        assert_type = case['assert_type']
+
+        table = case['DB_table']
+        print('\t',table)
         print(data['mobile'])
         param = json_template(name, data).template()
         result = ApiCall(param).api_call(test_getToken,api,method)
 
-        Assert().equal(result['code'],check,datail)
-
+        Assert(assert_type, result['code'], check, result['msg'])
+    # def test_add_market(self,test_getToken):
+    #     name = 'ac.activity.add'
+    #     case = GetYaml('add_market_test').case_select(name)
+    #     print(case)
+    #     data = case['data']
+    #     data['name'] = "JN测试市场活动1009"
+    #     method = case['method']
+    #     api = case['api']
+    #     check = case['check']
+    #     datail = case['datail']
+    #     assert_type = case['assert_type']
+    #
+    #     param = json_template(name, data).template()
+    #     print(param)
+    #     result = ApiCall(param).api_call(test_getToken, api, method)
+    #     print(result)
+    #     Assert(assert_type, result['code'], check, result['msg'])
 
 if __name__ == '__main__':
     # pytest.main(['-v','--setup-show'])
-    pytest.main(['--html=../report/report3.html'])
+    pytest.main(['-v'])
+    # pytest.main(['--collect-only'])
+    # pytest.main(['--html=../report/report3.html'])

@@ -1,5 +1,6 @@
 import pytest
 import random
+from ..DB_fixture.mysql_db import DB
 
 @pytest.fixture()
 def random_mobile():
@@ -21,7 +22,10 @@ def random_mobile():
     # 拼接手机号
     mobile =  "1{}{}{}".format(second, third, suffix)
 
-    return mobile
+    yield mobile
+
+
+    print("清除测试数据！")
 
 @pytest.fixture()
 def random_name():
@@ -53,12 +57,12 @@ def random_name():
         girl_name = girl[random.choice(range(len(girl)))]
         if random.choice(range(2)) > 0:
             name_1 = name[random.choice(range(len(name)))]
-        return firstName_name + name_1 + girl_name
+        yield firstName_name + name_1 + girl_name + "(JN)"
     else:
         boy_name = boy[random.choice(range(len(boy)))]
         if random.choice(range(2)) > 0:
             name_1 = name[random.choice(range(len(name)))]
-        return firstName_name + name_1 + boy_name
+        yield firstName_name + name_1 + boy_name + "(JN)"
 
 @pytest.fixture()
 def random_ID():

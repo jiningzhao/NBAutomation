@@ -47,5 +47,7 @@
       documentType: 2
   assert_type: equal
   check: 0
-
+  DB_table:
+      - wbs246
+      - wbs_employee
 

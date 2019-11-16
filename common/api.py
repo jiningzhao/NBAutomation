@@ -18,7 +18,10 @@ class ApiCall(Sign):
     # 将token值传入请求头，实现接口的调用
     def api_call(self,token,api,method='get'):
 
-        header = {"token": token}
+        header = {
+            "token": token,
+            'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'
+        }
         if token == None:
             header = None
 
