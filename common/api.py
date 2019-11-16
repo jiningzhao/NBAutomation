@@ -13,8 +13,6 @@ from common.Sign import Sign
 
 class ApiCall(Sign):
 
-
-
     # 将token值传入请求头，实现接口的调用
     def api_call(self,token,api,method='get'):
 

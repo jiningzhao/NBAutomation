@@ -57,12 +57,16 @@ def random_name():
         girl_name = girl[random.choice(range(len(girl)))]
         if random.choice(range(2)) > 0:
             name_1 = name[random.choice(range(len(name)))]
+
         yield firstName_name + name_1 + girl_name + "(JN)"
+
     else:
         boy_name = boy[random.choice(range(len(boy)))]
         if random.choice(range(2)) > 0:
             name_1 = name[random.choice(range(len(name)))]
+
         yield firstName_name + name_1 + boy_name + "(JN)"
+
 
 @pytest.fixture()
 def random_ID():

@@ -32,9 +32,10 @@ class Test_Add_Empolyee_Process():
         datail = case['datail']
         assert_type = case['assert_type']
         param = json_template(name,data).template()
-        # code = login(param, secret).getCode(method)
+
 
         code = str(ApiCall(param).api_call(None,api,method)['value']).split('code=')[-1]
+
 
         # assert code != 'None'
         Assert(assert_type,code,check,datail)
@@ -58,10 +59,12 @@ class Test_Add_Empolyee_Process():
         assert_type = case['assert_type']
         data['code'] = test_login
         param = json_template(name, data).template()
-        # token = login(param, secret).getToken(method)
+
         token = ApiCall(param).api_call(None,api,method)['value']['token']
 
+
         Assert(assert_type, token, check, datail)
+
 
 
         return token
