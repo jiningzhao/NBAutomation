@@ -4,6 +4,7 @@
   name: passport.login.security
   api: /passport/api
   method: post
+  headers: None
   data:
       account: 15110117932
       password: a111111
@@ -18,6 +19,7 @@
   name: passport.userinfo.bycode
   api: /passport/api
   method: post
+  headers: None
   data:
       code: None
   assert_type: notEqual
@@ -29,6 +31,7 @@
   name: passport.employee.add
   api: /passport/api
   method: post
+  headers: None
   data:
       name: 测试员工——JN1
       email: !!str

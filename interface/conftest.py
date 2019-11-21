@@ -25,7 +25,7 @@ def random_mobile():
     yield mobile
 
 
-    print("清除测试数据！")
+
 
 @pytest.fixture()
 def random_name():
