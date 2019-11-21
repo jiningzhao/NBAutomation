@@ -5,7 +5,7 @@ class GetYaml():
     def __init__(self,casename):
         self.casename = casename
 
-        f = open(r'../params/Yaml/{}.yml'.format(self.casename))
+        f = open(r'../params/Yaml/{}.yml'.format(self.casename),encoding="utf-8")
         self.cases = yaml.safe_load(f)
 
     def case_read(self):
