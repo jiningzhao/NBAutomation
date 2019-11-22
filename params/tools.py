@@ -28,11 +28,17 @@ class GetYaml():
 
         result = ApiCall(param).api_call(self.headers, case['api'], case['method'])
 
+        if 'DB_table' in case:
+            DB_table = case['DB_table']
+        else:
+            DB_table = None
+
         response = {
             'result':result,
             'assert_type':case['assert_type'],
             'check':case['check'],
-            'datail':case['datail']
+            'datail':case['datail'],
+            'DB_table':DB_table
         }
 
         return response
