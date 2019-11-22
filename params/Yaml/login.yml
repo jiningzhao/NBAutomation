@@ -1,4 +1,4 @@
-# 验证登录
+# 企业后台登录
 -
   datail: !!str 全局管理员登录
   name: passport.login.security
@@ -13,7 +13,7 @@
   assert_type: notEqual
   check: None
 
-# 获取Token
+# 企业后台获取Token
 -
   datail: !!str 获取Token信息
   name: passport.userinfo.bycode

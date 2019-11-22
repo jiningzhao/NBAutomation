@@ -1,8 +1,9 @@
 '''
 封装断言
 '''
+# from DB_fixture.mysql_db import DB
 class Assert():
-    def __init__(self,assert_type,real,expect,datail):
+    def __init__(self,assert_type,real,expect,datail = None):
         if assert_type == 'equal':
             self.equal(real,expect,datail)
         elif assert_type == 'notEqual':
@@ -32,6 +33,7 @@ class Assert():
         assert expect != real,datail
 
     def IN(self,real,expect,datail):
+        # expect = DB().select("")
 
         assert real in expect,datail
 

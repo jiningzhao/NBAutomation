@@ -30,13 +30,13 @@ password = cf.get("mysqlconf","password")
 '''
 class DB():
 
-    def __init__(self):
+    def __init__(self,real_db=db):
         try:
             # 连接数据库
             self.conn = connect(host = host,
                                 user = user,
                                 password = password,
-                                db = db,
+                                db = real_db,
                                 charset = 'utf8mb4',
                                 cursorclass = cursors.DictCursor)
 
@@ -77,16 +77,18 @@ class DB():
 
         self.conn.commit()
 
-    def select(self,sql):
+    def select(self,table,key,value):
 
         with self.conn.cursor() as cursors:
-            cursors.execute(sql)
+            # cursors.execute(sql)
+            cursors.execute("select {1} from {0} where {1} = {2};".format(table,key,value))
+
 
         self.conn.commit()
 
         result1 = cursors.fetchall()
 
-        result1 = json.loads(result1[0]['data'],encoding="utf-8")
+        # result1 = json.loads(result1,encoding="utf-8")
 
         return result1
 
@@ -94,30 +96,34 @@ class DB():
     def close(self):
         self.conn.close()
 
-# if __name__ == "__main__":
-#     db = DB()
-#     table_name = "case1"
-#     # data = {"account": "18888888889", "password": "a111111", "returnUrl": "", "captcha": ""}
-#     interface_name = "passport.employee.add"
-#     data = {"gender":"0",
-#                 "deptIds":[1],
-#                 "defaultDept":"",
-#                 "documentType":"2",
-#                 "joinDate":"2019-10-01",
-#                 "roleIds":[],
-#                 "education":"2",
-#                 "married":"",
-#                 "employeeNo":"",
-#                 "positionId":42,
-#                 "name":"赵吉宁",
-#                 "documentNo":"133124152346142",
-#                 "mobile":"10900000005",
-#                 "managers":[1],
-#                 "email":""}
-#     print(json.dumps(data))
-#     table_data = {"interface_name":interface_name,"data":json.dumps(data,ensure_ascii=False)}
-#     db.clear(table_name)
-#     db.insert(table_name,table_data)
-#     result1=db.select('select * from case1')
-#     print(result1)
-#     db.close()
+if __name__ == "__main__":
+    db = DB('wbs246')
+    table_name = "wbs_employee"
+    key = 'name'
+    value = "'吉宁'"
+    # # data = {"account": "18888888889", "password": "a111111", "returnUrl": "", "captcha": ""}
+    # interface_name = "passport.employee.add"
+    # data = {"gender":"0",
+    #             "deptIds":[1],
+    #             "defaultDept":"",
+    #             "documentType":"2",
+    #             "joinDate":"2019-10-01",
+    #             "roleIds":[],
+    #             "education":"2",
+    #             "married":"",
+    #             "employeeNo":"",
+    #             "positionId":42,
+    #             "name":"赵吉宁",
+    #             "documentNo":"133124152346142",
+    #             "mobile":"10900000005",
+    #             "managers":[1],
+    #             "email":""}
+    # print(json.dumps(data))
+    # table_data = {"interface_name":interface_name,"data":json.dumps(data,ensure_ascii=False)}
+    # db.clear(table_name)
+    # db.insert(table_name,table_data)
+
+    result1=db.select(table_name,key,value)
+
+    print(result1)
+    db.close()

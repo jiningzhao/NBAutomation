@@ -39,7 +39,7 @@ def random_massage():
 
     f = Faker(locale="zh_CN")
     massage = {
-        'name':f.name(),
+        'name':f.name()+"(JN)",
         'mobile':f.phone_number(),
         'ID_card':f.ssn()
     }

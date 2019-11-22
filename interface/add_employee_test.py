@@ -19,11 +19,8 @@ class Test_Add_Empolyee_Process():
         response = GetYaml('add_employee',other_data=other_data,headers=get_Token).case_select(name)
 
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
+        # Assert('IN',other_data['mobile'],None)
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 546de132b56d6686568fafa3edb6cf6fcd9e267f
 if __name__ == '__main__':
     pytest.main(['-v','--setup-show'])
     # pytest.main(['-v','-s'])
