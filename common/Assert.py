@@ -20,8 +20,12 @@ class Assert():
 
 
     def equal(self,real,expect,datail):
+        try:
+            assert expect == real,datail
+        except AssertionError as e:
+            print('1')
 
-        assert expect == real,datail
+
 
     def notEqual(self,real,expect,datail):
 

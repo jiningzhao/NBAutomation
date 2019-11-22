@@ -51,8 +51,6 @@ class Test_Add_Empolyee_Process():
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
 
 
-
-
 if __name__ == '__main__':
     # pytest.main(['-v','--setup-show'])
     pytest.main(['-v','-s'])

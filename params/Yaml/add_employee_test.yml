@@ -6,10 +6,12 @@
   method: post
   headers: None
   data:
-      account: 15110117932
-      password: a111111
-      returnUrl: !!str
-      captcha: !!str
+      {
+      account: 15110117932,
+      password: 'a111111',
+      returnUrl: '',
+      captcha: ''
+      }
   assert_type: notEqual
   check: None
 
@@ -21,7 +23,7 @@
   method: post
   headers: None
   data:
-      code: None
+      {code: None}
   assert_type: notEqual
   check: None
 
@@ -33,21 +35,23 @@
   method: post
   headers: None
   data:
-      name: 测试员工——JN1
-      email: !!str
-      gender: 0
-      mobile: None
-      deptIds: [1]
-      married: !!str
-      roleIds: []
-      joinDate: !!str 2019-10-01
-      managers: [1]
-      education: 2
-      documentNo: None
-      employeeNo: !!str
-      positionId: 42
-      defaultDept: !!str
-      documentType: 2
+        {
+        name: '测试员工—— JN1',
+        email: '',
+        gender: 0,
+        mobile: 'None',
+        deptIds: [ 1 ],
+        married: '',
+        roleIds: [],
+        joinDate: '2019 - 10 - 01',
+        managers: [ 1 ],
+        education: 2,
+        documentNo: 'None',
+        employeeNo: '',
+        positionId: 42,
+        defaultDept: '',
+        documentType: 2
+        }
   assert_type: equal
   check: 0
   DB_table:

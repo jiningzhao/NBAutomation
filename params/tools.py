@@ -14,11 +14,8 @@ class GetYaml():
         f = open(r'../params/Yaml/{}.yml'.format(self.casename))
         self.cases = yaml.safe_load(f)
 
-    def case_read(self):
-        return self.cases
-
     def case_select(self,name):
-        for case in GetYaml(self.casename).case_read():
+        for case in self.cases:
             if case['name'] == name:
                 if self.other_data != None:
                     for i in self.other_data:
