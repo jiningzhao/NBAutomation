@@ -11,7 +11,7 @@ class GetYaml():
         self.other_data = other_data
         self.headers = headers
 
-        f = open(r'../params/Yaml/{}.yml'.format(self.casename))
+        f = open(r'../params/Yaml/{}.yml'.format(self.casename),encoding="utf-8")
         self.cases = yaml.safe_load(f)
 
     def case_select(self,name):

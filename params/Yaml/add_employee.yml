@@ -1,5 +1,5 @@
-# 验证登录
 -
+<<<<<<< HEAD:params/Yaml/add_employee_test.yml
   datail: !!str 全局管理员登录
   name: passport.login.security
   api: /passport/api
@@ -27,6 +27,10 @@
   assert_type: notEqual
   check: None
 
+=======
+  datail: 新增职位
+  name:
+>>>>>>> 546de132b56d6686568fafa3edb6cf6fcd9e267f:params/Yaml/add_employee.yml
 # 新增员工
 -
   datail: 新增员工
@@ -57,4 +61,3 @@
   DB_table:
       - wbs246
       - wbs_employee
-
