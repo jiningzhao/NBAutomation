@@ -80,8 +80,10 @@ class DB():
     def select(self,table,key,value):
 
         with self.conn.cursor() as cursors:
-            # cursors.execute(sql)
-            cursors.execute("select {1} from {0} where {1} = {2};".format(table,key,value))
+
+            sql = "select {1} from {0} where {1} = '{2}';".format(table, key, value)
+            cursors.execute(sql)
+
 
 
         self.conn.commit()
@@ -101,29 +103,8 @@ if __name__ == "__main__":
     table_name = "wbs_employee"
     key = 'name'
     value = "'吉宁'"
-    # # data = {"account": "18888888889", "password": "a111111", "returnUrl": "", "captcha": ""}
-    # interface_name = "passport.employee.add"
-    # data = {"gender":"0",
-    #             "deptIds":[1],
-    #             "defaultDept":"",
-    #             "documentType":"2",
-    #             "joinDate":"2019-10-01",
-    #             "roleIds":[],
-    #             "education":"2",
-    #             "married":"",
-    #             "employeeNo":"",
-    #             "positionId":42,
-    #             "name":"赵吉宁",
-    #             "documentNo":"133124152346142",
-    #             "mobile":"10900000005",
-    #             "managers":[1],
-    #             "email":""}
-    # print(json.dumps(data))
-    # table_data = {"interface_name":interface_name,"data":json.dumps(data,ensure_ascii=False)}
-    # db.clear(table_name)
-    # db.insert(table_name,table_data)
+
 
     result1=db.select(table_name,key,value)
 
-    print(result1)
     db.close()

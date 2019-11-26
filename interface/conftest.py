@@ -6,7 +6,7 @@ from common.Assert import Assert
 # from ..DB_fixture.mysql_db import DB_fixture
 
 
-@pytest.fixture()
+@pytest.fixture(scope='class')
 def get_Code():
 
     name = 'passport.login.security'
@@ -19,7 +19,7 @@ def get_Code():
 
     return code
 
-@pytest.fixture()
+@pytest.fixture(scope='class')
 def get_Token(get_Code):
 
     name = 'passport.userinfo.bycode'

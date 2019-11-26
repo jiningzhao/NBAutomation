@@ -1,17 +1,17 @@
 '''
 封装断言
 '''
-# from DB_fixture.mysql_db import DB
+from DB_fixture.mysql_db import DB
 class Assert():
-    def __init__(self,assert_type,real,expect,datail = None):
+    def __init__(self,assert_type,real,expect,datail = None,DB_table = None):
         if assert_type == 'equal':
             self.equal(real,expect,datail)
         elif assert_type == 'notEqual':
             self.notEqual(real, expect, datail)
         elif assert_type == 'IN':
-            self.IN(real, expect, datail)
+            self.IN(real, expect, datail,DB_table)
         elif assert_type == 'notIN':
-            self.not_IN(real, expect, datail)
+            self.not_IN(real, expect, datail,DB_table)
         elif assert_type == 'cover':
             self.cover(real, expect, datail)
         elif assert_type == 'notCover':
@@ -21,10 +21,8 @@ class Assert():
 
 
     def equal(self,real,expect,datail):
-        try:
-            assert expect == real,datail
-        except AssertionError as e:
-            print('1')
+
+        assert expect == real, datail
 
 
 
@@ -32,12 +30,14 @@ class Assert():
 
         assert expect != real,datail
 
-    def IN(self,real,expect,datail):
-        # expect = DB().select("")
+    def IN(self,real,expect,datail,DB_table):
 
-        assert real in expect,datail
+        expect_1 = DB(DB_table[0]).select(DB_table[1],expect,real)
+        real_1 = {expect:real}
 
-    def not_IN(self,real,expect,datail):
+        assert real_1 in expect_1,datail
+
+    def not_IN(self,real,expect,datail,DB_table):
 
         assert real not in expect,datail
 

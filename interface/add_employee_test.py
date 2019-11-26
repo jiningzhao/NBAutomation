@@ -8,7 +8,7 @@ from params.tools import GetYaml
 from common.Assert import Assert
 
 
-class Test_Add_Empolyee_Process():
+class Test_Add_Employee_Process():
 
     def test_add_employee(self,get_Token,random_massage):
 
@@ -19,10 +19,11 @@ class Test_Add_Empolyee_Process():
         response = GetYaml('add_employee',other_data=other_data,headers=get_Token).case_select(name)
 
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
-        # Assert('IN',other_data['mobile'],None)
+        Assert('IN',other_data['mobile'],'mobile',None,response['DB_table'])
+
 
 if __name__ == '__main__':
-    pytest.main(['-v','--setup-show'])
+    pytest.main(['-v','-s','--setup-show'])
     # pytest.main(['-v','-s'])
     # pytest.main(['--collect-only'])
     # pytest.main(['--html=../report/report3.html'])

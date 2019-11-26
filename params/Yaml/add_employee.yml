@@ -14,7 +14,7 @@
         deptIds: [ 1 ],
         married: '',
         roleIds: [],
-        joinDate: '2019 - 10 - 01',
+        joinDate: '2019-11-27',
         managers: [ 1 ],
         education: 2,
         documentNo: 'None',
