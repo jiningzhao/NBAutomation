@@ -41,7 +41,8 @@ def random_massage():
     massage = {
         'name':f.name()+"(JN)",
         'mobile':f.phone_number(),
-        'ID_card':f.ssn()
+        'ID_card':f.ssn(),
+        'sentence':f.sentence()
     }
 
     return massage

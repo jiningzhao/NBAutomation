@@ -19,11 +19,13 @@ class Test_Add_Employee_Process():
         response = GetYaml('add_employee',other_data=other_data,headers=get_Token).case_select(name)
 
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
-        Assert('IN',other_data['mobile'],'mobile',None,response['DB_table'])
+
+        # Assert('IN',other_data['mobile'],'mobile',None,response['DB_table'])
 
 
 if __name__ == '__main__':
-    pytest.main(['-v','-s','--setup-show'])
-    # pytest.main(['-v','-s'])
+    # pytest.main(['-v','-s','--setup-show'])
+
+    pytest.main(['-v','-s'])
     # pytest.main(['--collect-only'])
     # pytest.main(['--html=../report/report3.html'])

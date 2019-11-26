@@ -12,7 +12,6 @@ from common.Assert import Assert
 class Test_Add_Market_Process():
 
     def one_test(self,get_Token):
-        print(get_Token)
 
         name = 'obj.pageinfo.get'
 
@@ -21,7 +20,7 @@ class Test_Add_Market_Process():
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
 
     def two_test(self,get_Token):
-        print(get_Token)
+
         name = 'obj.pageinfo.get'
 
         response = GetYaml('add_market_test',headers=get_Token).case_select(name)
@@ -29,7 +28,7 @@ class Test_Add_Market_Process():
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
 
     def three_test(self,get_Token):
-        print(get_Token)
+
         name = 'obj.objfield.selectshowjson'
 
         response = GetYaml('add_market_test',headers=get_Token).case_select(name)
@@ -37,7 +36,7 @@ class Test_Add_Market_Process():
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
 
     def four_test(self,get_Token):
-        print(get_Token)
+
         name = 'ac.activityType.list2'
 
         response = GetYaml('add_market_test',headers=get_Token).case_select(name)
@@ -45,18 +44,18 @@ class Test_Add_Market_Process():
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
 
     def five_test(self,get_Token):
-        print(get_Token)
+
         name = 'ac.labelConf.list2'
 
         response = GetYaml('add_market_test',headers=get_Token).case_select(name)
 
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
 
-    def add_market_test(self, get_Token):
-        print(get_Token)
-        name = 'ac.activity.add'
+    def add_market_test(self, get_Token,random_massage):
 
-        response = GetYaml('add_market_test', headers=get_Token).case_select(name)
+        name = 'ac.activity.add'
+        other_data = {'name':random_massage['sentence']+'(JN)'}
+        response = GetYaml('add_market_test', other_data=other_data,headers=get_Token).case_select(name)
 
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
 
