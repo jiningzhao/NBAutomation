@@ -3,6 +3,7 @@ from ruamel import yaml
 from config.config import conf
 import time
 from common.api import ApiCall
+import sys
 
 
 class GetYaml():
@@ -22,9 +23,33 @@ class GetYaml():
                 if self.other_data != None:
                     for i in self.other_data:
                         case['data'][i] = self.other_data[i]
-                return self._response(case)
+                if str(name)[0:3] == 'old':
+                    return self._response_old(case)
+                else:
+                    return self._response_new(case)
 
-    def _response(self,case):
+    def _response_old(self,case):
+
+        param = json_template(case['name'],case['data']['param'],self.headers).old_template()
+
+        result = ApiCall(param).api_call(self.headers,case['api'],case['method'])
+
+        if 'DB_table' in case:
+            DB_table = case['DB_table']
+        else:
+            DB_table = None
+
+        response = {
+            'result':result,
+            'assert_type':case['assert_type'],
+            'check':case['check'],
+            'datail':case['datail'],
+            'DB_table':DB_table
+        }
+
+        return response
+
+    def _response_new(self,case):
 
         param = json_template(case['name'], case['data'],self.headers).template()
 
@@ -63,5 +88,15 @@ class json_template():
             "timestamp": time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()),
             "format": "json"
         }
+
+        return param
+
+    def old_template(self):
+
+        param = {
+            'token': self.token,
+            'param': self.data
+        }
+
 
         return param

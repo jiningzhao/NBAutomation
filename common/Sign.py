@@ -31,27 +31,47 @@ class Sign():
     def param_fix(self,param):
 
         # 1.拿到data的值
-        data = param['data']
+        if 'param' in param.keys():
 
-        # 2.对data值中的password进行md5加密
-        if 'password' in data:
-            password = self.md5(data['password'])
+            data = param['param']
 
-        # 3.加密后的password传回data中
-            data['password'] = password
+            # param['param'] = str(data)
+            print('1',param)
 
-        # 4.对data值进行字符串处理、字符化处理并进行url编码
+            # 5.调用签名算法生成签名sign，并把sign赋给param，入参param处理完成
+            param['sign'] = self.sign_old(param)
 
-        param['data'] = self.urlEncoding(data)
+            param['param'] = data
+            print('2', param)
 
-        # 5.调用签名算法生成签名sign，并把sign赋给param，入参param处理完成
-        param['sign'] = self.sign(param)
 
-        return param
+            return param
+
+        else:
+
+            data = param['data']
+
+            # 2.对data值中的password进行md5加密
+            if 'password' in data:
+                password = self.md5(data['password'],letter='upper')
+
+            # 3.加密后的password传回data中
+                data['password'] = password
+
+            # 4.对data值进行字符串处理、字符化处理并进行url编码
+
+            param['data'] = self.urlEncoding(data)
+
+            # 5.调用签名算法生成签名sign，并把sign赋给param，入参param处理完成
+            param['sign'] = self.sign(param)
+
+
+
+            return param
 
 
     # md5加密算法，且加密后的字符串全部大写——>针对于密码、sign值（拼接之后）的加密
-    def md5(self,data):
+    def md5(self,data,letter):
 
         # 1.创建md5对象
         m = hashlib.md5()
@@ -60,7 +80,11 @@ class Sign():
         m.update(data.encode("utf-8"))
 
         # 3.返回经过md5加密的字符串，全部大写
-        return m.hexdigest().upper()
+        if letter == 'upper':
+            md = m.hexdigest().upper()
+        else:
+            md = m.hexdigest().lower()
+        return md
 
     # 签名算法：根据一定拼接方式，生成sign值——>针对于传参中sign字符串的拼接
     def sign(self,param):
@@ -83,9 +107,17 @@ class Sign():
         string_sign = self.secret + string_sign +self.secret
 
         # 6.对结果进行md5加密，生成最后的签名
-        return self.md5(string_sign)
+        return self.md5(string_sign,letter = 'upper')
 
-    # url编码——>针对于传参中data的url编码
+    def sign_old(self,param):
+        i = ''
+        print('3',param)
+        for keys in param['param'].keys():
+             i+= str(param['param'].get(keys))
+        string_sign = str(i + ',' +self.app_key)
+        print(string_sign)
+        return self.md5(string_sign,letter = 'lower')
+        # url编码——>针对于传参中data的url编码
     def urlEncoding(self,data):
         # 1.将data转换为字符串
         string_data = str(data)

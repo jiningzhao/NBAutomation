@@ -42,7 +42,10 @@ def random_massage():
         'name':f.name()+"(JN)",
         'mobile':f.phone_number(),
         'ID_card':f.ssn(),
-        'sentence':f.sentence()
+        'sentence':f.sentence(),
+        'number(1-3)':f.random_int(min=1,max=3),
+        'number(1-2)':f.random_int(min=1,max=2),
+        'job':f.job()
     }
 
     return massage

@@ -43,6 +43,7 @@ class Test_Add_Market_Process():
 
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
 
+
     def five_test(self,get_Token):
 
         name = 'ac.labelConf.list2'
@@ -50,6 +51,7 @@ class Test_Add_Market_Process():
         response = GetYaml('add_market_test',headers=get_Token).case_select(name)
 
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
+
 
     def add_market_test(self, get_Token,random_massage):
 
