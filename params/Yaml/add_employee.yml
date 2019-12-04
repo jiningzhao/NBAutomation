@@ -61,6 +61,6 @@
         }
   assert_type: equal
   check: 0
-#  DB_table:
-#      - wbs240
-#      - wbs_employee
+  DB_table:
+      - wbs240
+      - wbs_employee

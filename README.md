@@ -33,3 +33,56 @@
 + yaml
 + time
 #### 测试用例书写：
+##### yaml
+```
+# 新增员工
+-
+  datail: 新增员工
+  name: passport.employee.add
+  api: /passport/api
+  method: post
+  headers: None
+  data:
+        {
+        name: 'None',
+        email: '',
+        gender: 0,
+        mobile: 'None',
+        deptIds: 'None',
+        married: '',
+        roleIds: [],s
+        joinDate: '2019-11-27',
+        managers: [ 0 ],
+        education: 2,
+        documentNo: 'None',
+        employeeNo: '',
+        positionId: 'None',
+        defaultDept: '',
+        documentType: 2
+        }
+  assert_type: equal
+  check: 0
+  DB_table:
+      - wbs240
+      - wbs_employee
+```
+##### testcase
+```
+    def test_add_employee(self,get_Token,random_massage,test_add_position):
+
+        name = 'passport.employee.add'
+
+        other_data = {
+            'mobile':random_massage['mobile'],
+            'name':random_massage['name'],
+            'documentNo':random_massage['ID_card'],
+            'positionId':test_add_position,
+            'deptIds':[1]
+        }
+
+        response = GetYaml('add_employee',other_data=other_data,headers=get_Token).case_select(name)
+
+        Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
+        print('员工:',other_data['name'])
+        Assert('IN',other_data['mobile'],'mobile',None,response['DB_table'])
+```
