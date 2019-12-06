@@ -11,24 +11,24 @@ from common.Assert import Assert
 class Test_Add_Employee_Process():
 
     # @pytest.fixture()
-    # def test_add_department(sel, get_Token, random_massage):
-    #
-    #     name = 'old_add_department'
-    #
-    #     other_data = {
-    #         'param': {
-    #             'name':random_massage['job'],
-    #             'departmentTypeCode': random_massage['number(1-2)']
-    #         }
-    #     }
-    #
-    #     response = GetYaml('add_employee', other_data=other_data, headers=get_Token).case_select(name)
-    #
-    #     Assert(response['assert_type'], response['result']['success'], response['check'], response['result'])
-    #
-    #     print('部门：', other_data['param']['name'])
+    def test_add_department(sel, get_Token, random_massage):
 
-        # return response['result']['data']
+        name = 'old_add_department'
+
+        other_data = {
+            'param': {
+                'name':random_massage['job'],
+                'departmentTypeCode': random_massage['number(1-2)']
+            }
+        }
+
+        response = GetYaml('add_employee', other_data=other_data, headers=get_Token).case_select(name)
+        print('部门：', other_data['param']['name'])
+        Assert(response['assert_type'], response['result']['success'], response['check'], response['result'])
+
+        print('部门：', other_data['param']['name'])
+
+        return response['result']['data']
 
     @pytest.fixture()
     def test_add_position(sel,get_Token,random_massage):

@@ -33,7 +33,7 @@
 + yaml
 + time
 #### 测试用例书写：
-##### yaml
+##### 新接口（/XXX/api接口）yaml
 ```
 # 新增员工
 -
@@ -66,7 +66,7 @@
       - wbs240
       - wbs_employee
 ```
-##### testcase
+##### 新接口（/XXX/api接口）testcase
 ```
     def test_add_employee(self,get_Token,random_massage,test_add_position):
 
@@ -85,4 +85,43 @@
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
         print('员工:',other_data['name'])
         Assert('IN',other_data['mobile'],'mobile',None,response['DB_table'])
+```
+##### 老接口（.json）yaml
+```
+# 添加职位
+-
+  datail: 新增职位
+  name: old_add_position
+  api: /http/saas/position/add.json
+  method: post
+  headers: None
+  data:
+        {
+          param:
+            {
+            name: None,
+            propertyCode: None
+            }
+        }
+  assert_type: equal
+  check: true
+```
+##### 老接口testcase
+```
+@pytest.fixture()
+    def test_add_position(sel,get_Token,random_massage):
+
+        name = 'old_add_position'
+        other_data = {
+            'param':{
+                'name':random_massage['job'],
+                'propertyCode':random_massage['number(1-3)']
+            }
+        }
+
+        response = GetYaml('add_employee',other_data=other_data,headers=get_Token).case_select(name)
+
+        Assert(response['assert_type'], response['result']['success'], response['check'], response['result']['msg'])
+        print('职位：',other_data['param']['name'])
+        return response['result']['data']
 ```

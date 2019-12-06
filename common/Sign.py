@@ -37,7 +37,9 @@ class Sign():
 
             # param['param'] = str(data)
             print('1',param)
-
+            for i in param['param'].keys():
+                if i[-4:].lower() == "code":
+                    value = param['param'][i]
             # 5.调用签名算法生成签名sign，并把sign赋给param，入参param处理完成
             param['sign'] = self.sign_old(param)
 
@@ -110,14 +112,14 @@ class Sign():
         return self.md5(string_sign,letter = 'upper')
 
     def sign_old(self,param):
-        i = ''
-        print('3',param)
-        for keys in param['param'].keys():
-             i+= str(param['param'].get(keys))
-        string_sign = str(i + ',' +self.app_key)
+
+
+        string_sign = '{"value":'+str(param['param']['departmentTypeCode'])+'},test'
+
         print(string_sign)
         return self.md5(string_sign,letter = 'lower')
-        # url编码——>针对于传参中data的url编码
+
+    # url编码——>针对于传参中data的url编码
     def urlEncoding(self,data):
         # 1.将data转换为字符串
         string_data = str(data)
