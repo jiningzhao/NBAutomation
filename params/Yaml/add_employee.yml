@@ -1,6 +1,6 @@
 # 新增一级部门
 -
-  datail: 新增一级部门
+  detail: 新增一级部门
   name: old_add_department
   api: /http/saas/department/addTopDept.json
   method: post
@@ -18,7 +18,7 @@
 
 # 添加职位
 -
-  datail: 新增职位
+  detail: 新增职位
   name: old_add_position
   api: /http/saas/position/add.json
   method: post
@@ -36,7 +36,7 @@
 
 # 新增员工
 -
-  datail: 新增员工
+  detail: 新增员工
   name: passport.employee.add
   api: /passport/api
   method: post

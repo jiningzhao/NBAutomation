@@ -81,7 +81,7 @@ class DB:
 
         with self.conn.cursor() as cursors:
 
-            sql = "select {1} from {0} where {1} = '{2}';".format(table, key, value)
+            sql = f"select {key} from {table} where {key} = '{value}';"
             cursors.execute(sql)
 
         self.conn.commit()

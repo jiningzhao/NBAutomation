@@ -1,6 +1,6 @@
 # 1
 -
-  datail: !!str 1
+  detail: !!str 1
   name: ac.evaluationPeriod.editGet
   api: /ac-web/api
   method: post
@@ -12,7 +12,7 @@
 
 # 2
 -
-  datail: !!str 2
+  detail: !!str 2
   name: obj.pageinfo.get
   api: /obj-web/api
   method: post
@@ -24,7 +24,7 @@
 
 # 3
 -
-  datail: !!str 3
+  detail: !!str 3
   name: obj.objfield.selectshowjson
   api: /obj-web/api
   method: post
@@ -36,7 +36,7 @@
 
 # 4
 -
-  datail: !!str 4
+  detail: !!str 4
   name: ac.activityType.list2
   api: /ac-web/api
   method: post
@@ -48,7 +48,7 @@
 
 # 5
 -
-  datail: !!str 5
+  detail: !!str 5
   name: ac.labelConf.list2
   api: /ac-web/api
   method: post
@@ -60,7 +60,7 @@
 
 # 新增市场活动
 -
-  datail: !!str 新增市场活动
+  detail: !!str 新增市场活动
   name: ac.activity.add
   api: /ac-web/api
   method: post

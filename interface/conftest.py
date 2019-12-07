@@ -15,7 +15,7 @@ def get_code():
 
     code = str(response['result']['value']).split('code=')[-1]
 
-    Assert(response['assert_type'], code, response['check'], response['datail'])
+    Assert(response['assert_type'], code, response['check'], response['detail'])
 
     return code
 

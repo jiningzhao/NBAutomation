@@ -1,6 +1,6 @@
 # 新增活动类型
 -
-  datail: 新增活动类型
+  detail: 新增活动类型
   name: ac.activityType.add
   api: /ac-web/api
   method: post
@@ -16,7 +16,7 @@
   assert_type: equal
   check: 0
 -
-  datail: 新增活动标签
+  detail: 新增活动标签
   name: ac.activityType.add
   api: /ac-web/api
   method: post
