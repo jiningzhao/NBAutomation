@@ -1,54 +1,60 @@
-'''
+"""
 封装断言
-'''
+"""
 from DB_fixture.mysql_db import DB
-class Assert():
-    def __init__(self,assert_type,real,expect,datail = None,DB_table = None):
+
+
+class Assert:
+    def __init__(self, assert_type, real, expect, detail=None, db_table=None):
         if assert_type == 'equal':
-            self.equal(real,expect,datail)
+            self.equal(real, expect, detail)
         elif assert_type == 'notEqual':
-            self.notEqual(real, expect, datail)
+            self.not_equal(real, expect, detail)
         elif assert_type == 'IN':
-            self.IN(real, expect, datail,DB_table)
+            self._in(real, expect, detail, db_table)
         elif assert_type == 'notIN':
-            self.not_IN(real, expect, datail,DB_table)
+            self.not_in(real, expect, detail)
         elif assert_type == 'cover':
-            self.cover(real, expect, datail)
+            self.cover(real, expect, detail)
         elif assert_type == 'notCover':
-            self.not_Cover(real, expect, datail)
+            self.not_cover(real, expect, detail)
         else:
             self.error(assert_type)
 
+    @staticmethod
+    def equal(real, expect, detail):
 
-    def equal(self,real,expect,datail):
+        assert expect == real, detail
 
-        assert expect == real, datail
+    @staticmethod
+    def not_equal(real, expect, detail):
 
+        assert expect != real, detail
 
+    @staticmethod
+    def _in(real, expect, detail, db_table):
 
-    def notEqual(self,real,expect,datail):
+        expect_1 = DB(db_table[0]).select(db_table[1], expect, real)
+        real_1 = {expect: real}
 
-        assert expect != real,datail
+        assert real_1 in expect_1, detail
 
-    def IN(self,real,expect,datail,DB_table):
+    @staticmethod
+    def not_in(real, expect, detail):
 
-        expect_1 = DB(DB_table[0]).select(DB_table[1],expect,real)
-        real_1 = {expect:real}
+        assert real not in expect, detail
 
-        assert real_1 in expect_1,datail
+    @staticmethod
+    def cover(real, expect, detail):
 
-    def not_IN(self,real,expect,datail,DB_table):
+        assert expect in real, detail
 
-        assert real not in expect,datail
+    @staticmethod
+    def not_cover(real, expect, detail):
 
-    def cover(self,real,expect,datail):
+        assert expect not in real, detail
 
-        assert expect in real, datail
+    @staticmethod
+    def error(assert_type):
 
-    def not_Cover(self,real,expect,datail):
-
-        assert expect not in real,datail
-
-    def error(self,assert_type):
-
-        assert 1 == 0,"没有匹配到断言类型【{}】，请联系管理员添加，或更换断言类型！".format(assert_type)
+        assert 1 == 0, "没有匹配到断言类型【{}】，请联系管理员添加，或更换断言类型！".format(assert_type)

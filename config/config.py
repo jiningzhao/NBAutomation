@@ -2,8 +2,7 @@ import os
 import configparser as cparser
 
 
-
-class conf():
+class Conf:
     def __init__(self):
         # 定位当前脚本所在位置的上级
         base_dir = str(os.path.dirname(__file__))
@@ -18,8 +17,8 @@ class conf():
         self.cf.read(file_path)
 
     def api_conf(self):
-        url = self.cf.get("url","url")
-        app_key = self.cf.get('url','app_key')
-        secret = self.cf.get('url','secret')
+        url = self.cf.get("url", "url")
+        app_key = self.cf.get('url', 'app_key')
+        secret = self.cf.get('url', 'secret')
 
-        return url,app_key,secret
+        return url, app_key, secret

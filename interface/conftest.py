@@ -1,5 +1,5 @@
 import pytest
-import random
+# import random
 from faker import Faker
 from params.tools import GetYaml
 from common.Assert import Assert
@@ -7,7 +7,7 @@ from common.Assert import Assert
 
 
 @pytest.fixture(scope='class')
-def get_Code():
+def get_code():
 
     name = 'passport.login.security'
 
@@ -15,37 +15,39 @@ def get_Code():
 
     code = str(response['result']['value']).split('code=')[-1]
 
-    Assert(response['assert_type'],code,response['check'],response['datail'])
+    Assert(response['assert_type'], code, response['check'], response['datail'])
 
     return code
 
+
 @pytest.fixture(scope='class')
-def get_Token(get_Code):
+def get_token(get_code):
 
     name = 'passport.userinfo.bycode'
 
-    other_data = {'code':get_Code}
+    other_data = {'code': get_code}
 
-    response = GetYaml('login',other_data=other_data).case_select(name)
+    response = GetYaml('login', other_data=other_data).case_select(name)
 
     token = response['result']['value']['token']
 
-    Assert(response['assert_type'], token, response['check'], response['datail'])
+    Assert(response['assert_type'], token, response['check'], response['detail'])
 
     return token
 
-@pytest.fixture()
+
+@pytest.fixture(scope='class')
 def random_massage():
 
     f = Faker(locale="zh_CN")
     massage = {
-        'name':f.name()+"(JN)",
-        'mobile':f.phone_number(),
-        'ID_card':f.ssn(),
-        'sentence':f.sentence(),
-        'number(1-3)':f.random_int(min=1,max=3),
-        'number(1-2)':f.random_int(min=1,max=2),
-        'job':f.job()
+        'name': f.name()+"(JN)",
+        'mobile': f.phone_number(),
+        'ID_card': f.ssn(),
+        'sentence': f.sentence(),
+        'number(1-3)': f.random_int(min=1, max=3),
+        'number(1-2)': f.random_int(min=1, max=2),
+        'job': f.job()
     }
 
     return massage

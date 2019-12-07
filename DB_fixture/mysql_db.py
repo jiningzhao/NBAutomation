@@ -1,8 +1,8 @@
-from pymysql import connect,cursors
+from pymysql import connect, cursors
 from pymysql.err import OperationalError
 import os
 import configparser as cparser
-import json
+# import json
 
 '''
 ================读取 db_config.ini 文件设置=================
@@ -10,7 +10,7 @@ import json
 # 定位当前脚本所在位置的上两级
 base_dir = str(os.path.dirname(os.path.dirname(__file__)))
 # 对文件路径进行格式处理
-base_dir = base_dir.replace("\\","/")
+base_dir = base_dir.replace("\\", "/")
 # 定位到db_config.ini文件
 file_path = base_dir + "/config/db_config.ini"
 
@@ -19,37 +19,37 @@ cf = cparser.ConfigParser()
 # read(filename)——直接读取文件内容
 cf.read(file_path)
 
-host = cf.get("mysqlconf","host")
-port = cf.get("mysqlconf","port")
-db = cf.get("mysqlconf","db_name")
-user = cf.get("mysqlconf","user")
-password = cf.get("mysqlconf","password")
+host = cf.get("mysqlconf", "host")
+port = cf.get("mysqlconf", "port")
+db = cf.get("mysqlconf", "db_name")
+user = cf.get("mysqlconf", "user")
+password = cf.get("mysqlconf", "password")
 
 '''
 ====================封装 MySQL 基本操作=====================
 '''
-class DB():
 
-    def __init__(self,real_db=db):
+
+class DB:
+
+    def __init__(self, real_db=db):
         try:
             # 连接数据库
-            self.conn = connect(host = host,
-                                user = user,
-                                password = password,
-                                db = real_db,
-                                charset = 'utf8mb4',
-                                cursorclass = cursors.DictCursor)
-
+            self.conn = connect(host=host,
+                                user=user,
+                                password=password,
+                                db=real_db,
+                                charset='utf8mb4',
+                                cursorclass=cursors.DictCursor)
 
         except OperationalError as e:
-            print("MySQL Error %d: %s" % (e.args[0],e.args[1]))
-
+            print("MySQL Error %d: %s" % (e.args[0], e.args[1]))
 
     # 清除数据库表
-    def clear(self,table_name):
+    def clear(self, table_name):
 
         # 编写sql语句，删除指定数据库表
-        real_sql = "delete from " + table_name +";"
+        real_sql = "delete from " + table_name + ";"
 
         with self.conn.cursor() as cursors:
 
@@ -63,7 +63,7 @@ class DB():
         self.conn.commit()
 
     # 插入表数据
-    def insert(self,table_name,table_data):
+    def insert(self, table_name, table_data):
 
         for key in table_data:
             table_data[key] = "'" + str(table_data[key]) + "'"
@@ -77,14 +77,12 @@ class DB():
 
         self.conn.commit()
 
-    def select(self,table,key,value):
+    def select(self, table, key, value):
 
         with self.conn.cursor() as cursors:
 
             sql = "select {1} from {0} where {1} = '{2}';".format(table, key, value)
             cursors.execute(sql)
-
-
 
         self.conn.commit()
 
@@ -94,17 +92,14 @@ class DB():
 
         return result1
 
-
     def close(self):
         self.conn.close()
+
 
 if __name__ == "__main__":
     db = DB('wbs246')
     table_name = "wbs_employee"
     key = 'name'
     value = "'吉宁'"
-
-
-    result1=db.select(table_name,key,value)
-
+    result1 = db.select(table_name, key, value)
     db.close()
