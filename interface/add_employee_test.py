@@ -12,7 +12,7 @@ class TestAddEmployeeProcess:
 
     @pytest.fixture()
     def test_add_department(self, get_token, random_massage):
-        print("部门：", random_massage['job'])
+
         # 传入接口名称
         name = 'old_add_department'
 
@@ -34,7 +34,7 @@ class TestAddEmployeeProcess:
 
     @pytest.fixture()
     def test_add_position(self, get_token, random_massage):
-        print("职位：", random_massage['job'])
+
         name = 'old_add_position'
         other_data = {
             'param': {
@@ -65,7 +65,7 @@ class TestAddEmployeeProcess:
 
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
 
-        Assert('IN', other_data['mobile'], 'mobile', None, response['DB_table'])
+        # Assert('IN', other_data['mobile'], 'mobile', None, response['DB_table'])
 
 
 if __name__ == '__main__':

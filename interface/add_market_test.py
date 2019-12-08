@@ -4,7 +4,7 @@
 # from ..common.api import ApiCall
 # from ..params.tools import GetYaml
 # from ..common.Assert import Assert
-import pytest
+# import pytest
 from params.tools import GetYaml
 from common.Assert import Assert
 
@@ -64,10 +64,3 @@ class TestAddMarketProcess:
         response = GetYaml('add_market_test', other_data=other_data, headers=get_token).case_select(name)
 
         Assert(response['assert_type'], response['result']['code'], response['check'], response['result']['msg'])
-
-
-if __name__ == '__main__':
-    pytest.main(['-v', '-s'])
-    # pytest.main(['-v','-s'])
-    # pytest.main(['--collect-only'])
-    # pytest.main(['--html=../report/report3.html'])
