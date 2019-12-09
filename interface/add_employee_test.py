@@ -18,10 +18,8 @@ class TestAddEmployeeProcess:
 
         # 参数化
         other_data = {
-            'param': {
                 'name': str(random_massage['job']).replace("/",  ""),
                 'departmentTypeCode': random_massage['number(1-2)']
-            }
         }
         # 调用函数并取出返回值
         response = GetYaml('add_employee', other_data=other_data, headers=get_token).case_select(name)
@@ -37,10 +35,8 @@ class TestAddEmployeeProcess:
 
         name = 'old_add_position'
         other_data = {
-            'param': {
                 'name': random_massage['job'],
                 'propertyCode': random_massage['number(1-3)']
-            }
         }
 
         response = GetYaml('add_employee', other_data=other_data, headers=get_token).case_select(name)
@@ -71,6 +67,6 @@ class TestAddEmployeeProcess:
 if __name__ == '__main__':
     # pytest.main(['-v','-s','--setup-show'])
     # pytest.main(['-v','--pdb'])
-    pytest.main(['-v', '-s'])
+    pytest.main(['-v', '-s', 'add_product_test.py'])
     # pytest.main(['--collect-only'])
     # pytest.main(['--html=../report/report3.html'])
