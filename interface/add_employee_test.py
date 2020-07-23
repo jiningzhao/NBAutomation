@@ -21,6 +21,7 @@ class TestAddEmployeeProcess:
                 'name': str(random_massage['job']).replace("/",  ""),
                 'departmentTypeCode': random_massage['number(1-2)']
         }
+
         # 调用函数并取出返回值
         response = GetYaml('add_employee', other_data=other_data, headers=get_token).case_select(name)
 
